@@ -1,14 +1,14 @@
 *** Settings ***
-Documentation   Test Case สำหรับทดสอบการล็อกอินด้วยบัญชี Google ผ่าน OAuth
+Documentation    ฟังก์ชั่นการจัดการช่วงเวลานัดวันเยี่ยมบ้าน (Admin Schedule Management)
 Library     SeleniumLibrary
 Library    OperatingSystem
-Resource    ../resources/keywords.robot
-Resource    ../resources/variables.robot
-
-
+Resource     ../resources/keywords.robot
+Resource     ../resources/variables.robot
 
 *** Test Cases ***
-TC1001 - Login With Google Account
+
+TC1901 - คุณครูทำแบบประเมิน SDQ ประเมินนักเรียนสำเร็จ
+    [Documentation]    ทดสอบการประเมิน SDQ ของคุณครู
     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
     # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
@@ -24,15 +24,23 @@ TC1001 - Login With Google Account
     # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
     Sleep    5s
 
-    Capture Page Screenshot with Name    TC1001_Success
-    Close Browser
+    # --- Verify Login Page ---
+    Page Should Contain    รายชื่อบุคลากร
+    # --- หน้าจัดการชั้นเรียน ---
+    Click Element  xpath=//*[@id="root"]/div[1]/div[2]/ul/li[5]/a
+    # --- Delay ---
+    Sleep  5s
+
 
 *** Keywords ***
+
+
+
 
 Capture Page Screenshot With Name
     [Arguments]    ${test_case_name}
     ${timestamp}=    Get Current Date    result_format=%Y%m%d_%H%M%S
-    ${folder}=       Set Variable    ${EXECDIR}/results/Login_results
+    ${folder}=       Set Variable    ${EXECDIR}/results/Admin_Schedule_results
     Create Directory    ${folder}
     ${filename}=     Set Variable    ${folder}/${test_case_name}_${timestamp}.png
     Log    Capturing screenshot: ${filename}

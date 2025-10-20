@@ -1,14 +1,16 @@
 *** Variables ***
-${BROWSER}          headlesschrome
+${BROWSER}          chrome
 ${GOOGLE_EMAIL}     654259027@webmail.npru.ac.th
 ${GOOGLE_PASSWORD}  166889966
-${SEARCH_TERM}      http://localhost:5173/
-${SEARCH_RESULT}    Robot
-${URL}              http://localhost:5173/
-${FIRST_NAME_FIELD}    id:add-personnel-firstname-input
-${LAST_NAME_FIELD}     id:add-personnel-lastname-input
-${USER_ID_FIELD}       id:add-personnel-userid-input    
-${PHONE_NUMBER_FIELD}  id:add-personnel-phone-input
 
+# http://localhost:5173
+# https://project-visit-home.xyz/
+
+${URL}              http://localhost:5173
 ${LOGIN_BUTTON_TEXT}    Sign in with Google
 ${existing_windows}
+${USERNAME}    654259027
+${PASSWORD}    166889966
+
+
+      

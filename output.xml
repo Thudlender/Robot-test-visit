@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.0 on win32)" generated="2025-10-09T18:26:08.509924" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot-06-Teacher Sdq" source="d:\Coding Works\Robot UV\tests\robot-06-teacher_sdq.robot">
+<test id="s1-t1" name="TC9001 - คุณครูทำแบบประเมิน SDQ ประเมินนักเรียนสำเร็จ" line="18">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:09.849669" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-10-09T18:26:09.848435" elapsed="5.692355"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-10-09T18:26:15.542015" elapsed="0.133196"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:15.677524" level="INFO">Clicking element 'xpath=//*[@id="privacy_checkbox"]'.</msg>
+<arg>xpath=//*[@id="privacy_checkbox"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:15.676311" elapsed="0.343753"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:16.022008" level="INFO">Clicking element 'xpath=//*[@id="privacy_modal"]/div/div[2]/form/button'.</msg>
+<arg>xpath=//*[@id="privacy_modal"]/div/div[2]/form/button</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:16.021138" elapsed="0.264203"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:16.287486" level="INFO">Clicking element 'id=btn-login'.</msg>
+<arg>id=btn-login</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:16.286670" elapsed="0.288322"/>
+</kw>
+<kw name="Login With Google OAuth" owner="keywords">
+<kw name="Get Window Handles" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:16.599418" level="INFO">${main_window} = ['1604DBE557E4D67962BDB0DEA4A5C775']</msg>
+<var>${main_window}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<status status="PASS" start="2025-10-09T18:26:16.577622" elapsed="0.023929"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-09T18:26:21.603770" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-09T18:26:16.602073" elapsed="5.008421"/>
+</kw>
+<kw name="Get Window Handles" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:22.280806" level="INFO">${all_windows} = ['1604DBE557E4D67962BDB0DEA4A5C775', '3687B243A3AEFD09A6A7401026F53057']</msg>
+<var>${all_windows}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<status status="PASS" start="2025-10-09T18:26:21.662469" elapsed="0.618707"/>
+</kw>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>${all_windows}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:22.281671" elapsed="1.710671"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>id=identifierId</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-10-09T18:26:23.993768" elapsed="0.195777"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:24.194575" level="INFO">Clicking element 'id=identifierId'.</msg>
+<arg>id=identifierId</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:24.190156" elapsed="2.089819"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:26.281348" level="INFO">Typing text '654259027' into text field 'id=identifierId'.</msg>
+<arg>id=identifierId</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:26.280597" elapsed="0.604066"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="identifierNext"]/div/button/span</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-09T18:26:26.885222" elapsed="0.105294"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:26.991644" level="INFO">Clicking element 'xpath=//*[@id="identifierNext"]/div/button/span'.</msg>
+<arg>xpath=//*[@id="identifierNext"]/div/button/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:26.991104" elapsed="0.762437"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>name=Passwd</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-10-09T18:26:27.754127" elapsed="1.366677"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:29.122057" level="INFO">Typing text '166889966' into text field 'name=Passwd'.</msg>
+<arg>name=Passwd</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:29.121366" elapsed="0.571623"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:29.694336" level="INFO">Clicking element 'xpath=//*[@id="passwordNext"]/div/button/span'.</msg>
+<arg>xpath=//*[@id="passwordNext"]/div/button/span</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:29.693651" elapsed="0.861862"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-09T18:26:40.560469" level="INFO">Slept 10 seconds.</msg>
+<arg>10s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-09T18:26:30.556067" elapsed="10.007557"/>
+</kw>
+<kw name="Switch Window" owner="SeleniumLibrary">
+<arg>${main_window}[0]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:40.564200" elapsed="0.061035"/>
+</kw>
+<arg>${USERNAME}</arg>
+<arg>${PASSWORD}</arg>
+<status status="PASS" start="2025-10-09T18:26:16.576370" elapsed="24.050167"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-09T18:26:45.675278" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-09T18:26:40.633184" elapsed="5.042657"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:45.903079" level="INFO">Current page contains text 'รายชื่อบุคลากร'.</msg>
+<arg>รายชื่อบุคลากร</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-10-09T18:26:45.713997" elapsed="0.189573"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:45.905260" level="INFO">Clicking element 'xpath=//*[@id="btn-switch-navbar"]'.</msg>
+<arg>xpath=//*[@id="btn-switch-navbar"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-09T18:26:45.904497" elapsed="0.554035"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-10-09T18:26:51.461879" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-10-09T18:26:46.460659" elapsed="5.001613"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-10-09T18:26:51.464870" level="INFO">Clicking element 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]'.</msg>
+<msg time="2025-10-09T18:26:51.664686" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-10-09T18:26:51.665704" level="FAIL">Element with locator 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]' not found.</msg>
+<arg>xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-10-09T18:26:51.463785" elapsed="0.218354">Element with locator 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]' not found.</status>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="manage_student_68e6bb2e7a3a9c428012c369"]/div/div/a[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-10-09T18:26:51.683418" elapsed="0.000314"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-09T18:26:51.685707" elapsed="0.001161"/>
+</kw>
+<kw name="Answer SDQ Page 1">
+<status status="NOT RUN" start="2025-10-09T18:26:51.692210" elapsed="0.000548"/>
+</kw>
+<kw name="Answer SDQ Page 2">
+<status status="NOT RUN" start="2025-10-09T18:26:51.700470" elapsed="0.001274"/>
+</kw>
+<kw name="Answer SDQ Page 3">
+<status status="NOT RUN" start="2025-10-09T18:26:51.714985" elapsed="0.000330"/>
+</kw>
+<kw name="Answer SDQ Page 4">
+<status status="NOT RUN" start="2025-10-09T18:26:51.728429" elapsed="0.000375"/>
+</kw>
+<kw name="Answer SDQ Page 5">
+<status status="NOT RUN" start="2025-10-09T18:26:51.745271" elapsed="0.000344"/>
+</kw>
+<kw name="Answer SDQ Page 6">
+<status status="NOT RUN" start="2025-10-09T18:26:51.760478" elapsed="0.000360"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-10-09T18:26:51.778708" elapsed="0.000418"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<arg>เพิ่มข้อมูล SDQ สำเร็จ</arg>
+<arg>timeout=10s</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="NOT RUN" start="2025-10-09T18:26:51.789404" elapsed="0.000476"/>
+</kw>
+<kw name="Capture Page Screenshot With Name">
+<arg>TC9001_SDQ Assessment_Success</arg>
+<status status="NOT RUN" start="2025-10-09T18:26:51.796528" elapsed="0.000526"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-10-09T18:26:51.810631" elapsed="0.001763"/>
+</kw>
+<doc>ทดสอบการประเมิน SDQ ของคุณครู</doc>
+<status status="FAIL" start="2025-10-09T18:26:09.843207" elapsed="41.980213">Element with locator 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]' not found.</status>
+</test>
+<doc>ฟังก์ชั่นแบบฟอร์มประเมิน SDQ (คุณครู)</doc>
+<status status="FAIL" start="2025-10-09T18:26:08.527525" elapsed="43.317182"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Robot-06-Teacher Sdq" id="s1" pass="0" fail="1" skip="0">Robot-06-Teacher Sdq</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
