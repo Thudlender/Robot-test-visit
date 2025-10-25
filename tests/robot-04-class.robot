@@ -9,6 +9,7 @@ Resource     ../resources/variables.robot
 ${CLASS_YEAR_NUMBER_FIELD}    id=room
 ${CLASS_ROOM_NUMBER_FIELD}  id=number
 ${TEACHER_FIELD}    id=teacherId
+${STUDENT_PREFIX_FIELD}    id=prefix 
 
 
 *** Test Cases ***
@@ -274,8 +275,47 @@ TC1707 - เจ้าหน้าที่ฝ่ายทะเบียนแ�
 
     Capture Page Screenshot With Name    TC1707_Update_Class_Teacher_Success
     Close Browser
+
+TC1708 - เจ้าหน้าที่ฝ่ายทะเบียนเพิ่มนักเรียนเข้าชั้นเรียนสำเร็จ
+    [Documentation]    ทดสอบการเพิ่มนักเรียนเข้าชั้นเรียน
+    # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
+    Open Browser    ${URL}    ${BROWSER}
+    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
+    Maximize Browser Window
+    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
+    Click Element    xpath=//*[@id="privacy_checkbox"]
+    # คลิกปุ่ม เข้าใจและยอมรับ
+    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
+    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
+    Click Element    id=btn-login
+    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
+    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
+    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
+    Sleep    5s
     
-TC1708 - เจ้าหน้าที่ฝ่ายทะเบียนลบชั้นเรียนสำเร็จ
+    # --- Verify Login Page ---
+    Page Should Contain    รายชื่อบุคลากร
+    # --- หน้าจัดการชั้นเรียน ---
+    Click Element  xpath=//*[@id="root"]/div[1]/div[2]/ul/li[5]/a
+    # --- Delay ---
+    Sleep  5s
+    # --- ปุ่มเพิ่มชั้นเรียน ---
+    Add Student
+    # --- กรอกข้อมูลชั้นเรียน ---
+    Select Dropdown Select Prefix Student    เด็กชาย
+    Add Student ID    83747
+    Add Student Name    จักรพัต
+    Add Student Last Name    กาลแดน
+
+    #--- บันทึกข้อมูลชั้นเรียน ---
+    Click Element    //*[@id="add-student-submit-button"]
+    #--- รอจนกว่าจะมีข้อความยืนยันการสร้างชั้นเรียน ---
+    Wait Until Page Contains    เพิ่มข้อมูลนักเรียนสำเร็จ   timeout=10s
+
+    Capture Page Screenshot With Name    TC1708_Add_Student_To_Class_Success
+    Close Browser
+    
+TC1709 - เจ้าหน้าที่ฝ่ายทะเบียนลบชั้นเรียนสำเร็จ
     [Documentation]    ทดสอบการลบชั้นเรียน
     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
@@ -326,7 +366,27 @@ Delete Class Confirm
     #--- ยืนยันการลบชั้นเรียน ---
     Click Element    xpath=/html/body/div[2]/div/div[6]/button[1]
     Wait Until Page Contains   ลบชั้นปี 6 ห้องที่ 4 สำเร็จ   timeout=15s
-    
+
+Add Student
+    #--- ปุ่มเพิ่มนักเรียนเข้าชั้นเรียน ---
+    Click Element    xpath=//*[@id="root"]/div[2]/div/div[2]/div[2]/button[2]
+    Sleep    2s
+
+Add Student ID
+    [Arguments]    ${STUDENT_ID_NUMBER} 
+    Input Text    id=add-student-userid-input    ${STUDENT_ID_NUMBER} 
+Select Dropdown Select Prefix Student
+    [Arguments]    ${STUDENT_PREFIX}
+    Select From List By Label    ${STUDENT_PREFIX_FIELD}    ${STUDENT_PREFIX}
+
+Add Student Name
+    [Arguments]    ${STUDENT_NAME}
+    Input Text    id=add-student-firstname-input    ${STUDENT_NAME}
+
+Add Student Last Name
+    [Arguments]    ${STUDENT_LASTNAME}
+    Input Text    id=add-student-lastname-input    ${STUDENT_LASTNAME}
+
 Add Class Year
     [Arguments]    ${CLASS_YEAR_NUMBER}
     Input Text    ${CLASS_YEAR_NUMBER_FIELD}    ${CLASS_YEAR_NUMBER}

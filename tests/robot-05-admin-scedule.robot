@@ -7,8 +7,8 @@ Resource     ../resources/variables.robot
 
 *** Test Cases ***
 
-TC1901 - คุณครูทำแบบประเมิน SDQ ประเมินนักเรียนสำเร็จ
-    [Documentation]    ทดสอบการประเมิน SDQ ของคุณครู
+TC1901 - เจ้าหน้าที่ฝ่ายทะเบียนกำหนดช่วงเวลานัดเยี่ยมบ้านสำเร็จ
+    [Documentation]    ทดสอบการกำหนดช่วงเวลานัดเยี่ยมบ้านของเจ้าหน้าที่ฝ่ายทะเบียน
     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
     # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
@@ -31,6 +31,8 @@ TC1901 - คุณครูทำแบบประเมิน SDQ ประเ
     # --- Delay ---
     Sleep  5s
 
+    Capture Page Screenshot With Name    TC1901_Admin_Schedule_Success
+    Close Browser
 
 *** Keywords ***
 

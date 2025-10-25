@@ -4,13 +4,17 @@ Library     SeleniumLibrary
 Library    OperatingSystem
 Resource     ../resources/keywords.robot
 Resource     ../resources/variables.robot
-# Resource     ../resources./Variables/Personnel_Variable.robot
 
 *** Variables ***
-${FIRST_NAME_FIELD}    id:add-personnel-firstname-input
-${LAST_NAME_FIELD}     id:add-personnel-lastname-input
-${USER_ID_FIELD}       id:add-personnel-userid-input    
-${PHONE_NUMBER_FIELD}  id:add-personnel-phone-input
+${PREFIX_DROPDOWN}    id:prefix
+${FIRST_NAME_FIELD}    id:first_name
+${LAST_NAME_FIELD}     id:last_name
+${USER_ID_FIELD}       id:user_id    
+${PHONE_NUMBER_FIELD}  id:phone
+${STATUS_DROPDOWN}          id:status
+
+${selected_prefix} =    Get Selected List Label    ${PREFIX_DROPDOWN}
+${selected_status} =    Get Selected List Label    ${STATUS_DROPDOWN}
 
 ${PREFIX_ERROR_MSG}    id="error_prefix"
 ${FIRST_NAME_ERROR_MSG}    id="error_firstname"
@@ -24,31 +28,23 @@ ${PHONE_NUMBER_ERROR_MSG}  id="error_phone"
 TC1401 - Add New Personnel Successfully
     [Documentation]    Test case to add new personnel with valid data
 
-    # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
     Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
     Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
     Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
     Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
     Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
     Sleep    5s
-
     # --- Verify Login Page ---
     Page Should Contain    รายชื่อบุคลากร
     # --- Add Personnel Button ---
     Add Teacher     
     # --- กรอกข้อมูลบุคลากร ---
     Prefix Dropdown    นาย 
-    Input First Name    สมชาย
-    Input Last Name    ใจดี
-    Input User ID    055
-    Input Phone Number    0457789643
+    Input First Name    สมปอง
+    Input Last Name    ทองแดน
+    Input User ID    020
+    Input Phone Number    0697745138
     Submit Personnel Info
     
     Capture Page Screenshot with Name    TC14001_Success
@@ -124,7 +120,7 @@ TC1403 - Add New Personnel without First Name
     Capture Page Screenshot With Name    TC14003_Validation
     Close Browser
 
-TC1404- Add New Personnel without Last Name
+TC1404 - Add New Personnel without Last Name
     [Documentation]    Test case to add new personnel without Last Name
     
     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
@@ -390,16 +386,21 @@ TC1411 Edit Personnel Successfully
     Login With Google OAuth    ${USERNAME}    ${PASSWORD}
     # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
     Sleep    5s
-
     # --- Verify Login Page ---
     Page Should Contain    รายชื่อบุคลากร
     # --- Edit Personnel Button ---
     Edit personnel
-    # --- กรอกข้อมูลบุคลากร
-    Prefix Dropdown    นาง
-    Input First Name     พิมพร
-    Input Last Name     สุขดี
-    Input Phone Number     0864479528
+
+    # --- (Optional) ตรวจสอบว่าข้อมูลเดิมถูกต้อง ---
+    Element Text Should Be    ${FIRST_NAME_FIELD}    สมสมร
+    Should Be Equal As Strings    ${selected_prefix}    นาย
+    Should Be Equal As Strings    ${selected_status}    ใช้งานอยู่
+    # --- กรอกข้อมูลบุคลากร ---   
+    # Prefix Dropdown    นางสาว
+    Edit Prefix Dropdown    นางสาว
+    Input First Name        สมหญิง
+    Input Last Name         เปลี่ยนนามสกุล
+    Input Phone Number      0801234567
     Status Dropdown    ไม่ได้ใช้งานแล้ว
     Save Edit Personnel
  
@@ -452,6 +453,7 @@ TC1413 Add Admin Role Successfully
     Page Should Contain    รายชื่อบุคลากร
     # --- Navigate to Admin Role Page ---
     Click Element    xpath=//*[@id="root"]/div[1]/div[2]/ul/li[3]/a
+    Sleep    3s
     # --- Toggle Add Admin Role ---
     Toggle Add Admin Role
 
@@ -479,6 +481,7 @@ TC1414 Delete Admin Role Successfully
     Page Should Contain    รายชื่อบุคลากร
     # --- Navigate to Admin Role Page ---
     Click Element    xpath=//*[@id="root"]/div[1]/div[2]/ul/li[3]/a
+    Sleep    3s
     # --- Toggle Delete Admin Role ---
     Toggle Delete Admin Role
 
@@ -491,7 +494,9 @@ TC1414 Delete Admin Role Successfully
 
 Prefix Dropdown
     [Arguments]    ${PREFIX}
-    Select From List By Label    xpath=//select[@id="prefix"]    ${PREFIX}
+    Select From List By Label    ${PREFIX_DROPDOWN}    ${PREFIX}
+   
+
 Input First Name
     [Arguments]    ${FIRST_NAME}    
     Input Text   ${FIRST_NAME_FIELD}    ${FIRST_NAME}
@@ -508,6 +513,23 @@ Input Phone Number
     [Arguments]    ${PHONE_NUMBER}
     Input Text   ${PHONE_NUMBER_FIELD}    ${PHONE_NUMBER}
 
+Edit Prefix Dropdown
+    [Arguments]    ${PREFIX}
+    # ใช้อันเดียวกับ 'Add' ได้ ถ้า Locator เหมือนกัน
+    Select From List By Label    ${PREFIX_DROPDOWN}    ${PREFIX}
+
+
+
+# Prefix Edit Dropdown
+#     [Arguments]    ${PREFIX}
+#     Select From List By Label    ${PREFIX_DROPDOWN}    ${PREFIX}
+
+
+
+Status Dropdown
+    [Arguments]    ${STATUS}
+    Select From List By Label    xpath=//select[@id="status"]    ${STATUS}
+
 Add Teacher
     Click Element   xpath=//*[@id="root"]/div[2]/div/div[2]/div/div[3]/button  
 
@@ -518,35 +540,33 @@ Submit Personnel Info
     Wait Until Page Contains   เพิ่มข้อมูลครูที่ปรึกษาเรียบร้อย   timeout=10s
 
 Edit personnel
-    Click Element    xpath=//*[@id="edit-personnel-button_68d2da4f356d2286cd4060f7"]
+    Click Element    xpath=//*[@id="edit-personnel-button_68fc925aff0ca9eb99eeec7d"]
 
 Save Edit Personnel
-    Click Button    xpath=//*[@id="edit_personnel_68d2da4f356d2286cd4060f7"]/div/form/div[2]/div/button[1]
+    Click Button    xpath=//*[@id="edit_personnel_68fc925aff0ca9eb99eeec7d"]/div/form/div[2]/div/button[1]
     Wait Until Page Contains   อัพเดทข้อมูลครูที่ปรึกษาเรียบร้อย   timeout=10s
 
 Delete personnel
-    Click Element    xpath=//*[@id="delete-personnel-button_6"]
+    Click Element    xpath=//*[@id="delete-personnel-button_5"]
     # --- Confirm Deletion in Modal --- 
     Click Button    xpath=/html/body/div[2]/div/div[6]/button[1]
     Wait Until Page Contains   ลบข้อมูลเรียบร้อย   timeout=10s
 
-Status Dropdown
-    [Arguments]    ${STATUS}
-    Select From List By Label    xpath=//select[@id="status"]    ${STATUS}
 
-Select Option
-    [Arguments]    ${OPTION}
-    Select From List By Label    xpath=//*[@id="selectedOption"]    ${OPTION}
+
+# Select Option
+#     [Arguments]    ${OPTION}
+#     Select From List By Label    xpath=//*[@id="selectedOption"]    ${OPTION}
 
 Toggle Add Admin Role
-    Click Button    xpath=//*[@id="admin-role-toggle_9"]
-    Wait Until Page Contains   เพิ่มสิทธ์ผู้ดูแลให้ นาย กิตติศักดิ์ สำเร็จ   timeout=10s
+    Click Button    xpath=//*[@id="admin-role-toggle_7"]
+    Wait Until Page Contains   เพิ่มสิทธ์ผู้ดูแลให้ นางสาว ศุภาพิชย์ สำเร็จ   timeout=10s
 
 Toggle Delete Admin Role
-    Click Button    xpath=//*[@id="admin-role-toggle_9"] 
+    Click Button    xpath=//*[@id="admin-role-toggle_7"] 
     # --- Confirm Deletion in Modal --- 
     Click Button    xpath=/html/body/div[2]/div/div[6]/button[1]
-    Wait Until Page Contains   ลบสิทธ์ผู้ดูแลให้ นายกิตติศักดิ์ สำเร็จ   timeout=10s
+    Wait Until Page Contains   ลบสิทธ์ผู้ดูแลให้ นางสาวศุภาพิชย์ สำเร็จ   timeout=10s
 
 Capture Page Screenshot With Name
     [Arguments]    ${test_case_name}

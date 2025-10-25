@@ -1,215 +1,194 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.0 on win32)" generated="2025-10-09T18:26:15.424407" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.13.0 on win32)" generated="2025-10-24T20:58:03.950499" rpa="false" schemaversion="5">
 <suite id="s1" name="Robot UV" source="d:\Coding Works\Robot UV">
 <suite id="s1-s1" name="Tests" source="d:\Coding Works\Robot UV\tests">
-<suite id="s1-s1-s1" name="Robot-06-Teacher Sdq" source="d:\Coding Works\Robot UV\tests\robot-06-teacher_sdq.robot">
-<test id="s1-s1-s1-t1" name="TC9001 - คุณครูทำแบบประเมิน SDQ ประเมินนักเรียนสำเร็จ" line="18">
+<suite id="s1-s1-s1" name="Robot-02-Personnel" source="d:\Coding Works\Robot UV\tests\robot-02-personnel.robot">
+<test id="s1-s1-s1-t1" name="TC1401 - Add New Personnel Successfully" line="24">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:17.730954" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<msg time="2025-10-24T20:58:05.937972" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<msg time="2025-10-24T20:58:12.884680" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=141.0.7390.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff63cdfe8e5+80021]
+	GetHandleVerifier [0x0x7ff63cdfe940+80112]
+	(No symbol) [0x0x7ff63cb8060f]
+	(No symbol) [0x0x7ff63cb6c145]
+	(No symbol) [0x0x7ff63cb9177a]
+	(No symbol) [0x0x7ff63cc08b06]
+	(No symbol) [0x0x7ff63cc28fa2]
+	(No symbol) [0x0x7ff63cc01003]
+	(No symbol) [0x0x7ff63cbc95d1]
+	(No symbol) [0x0x7ff63cbca3f3]
+	GetHandleVerifier [0x0x7ff63d0bdc7d+2960429]
+	GetHandleVerifier [0x0x7ff63d0b7f3a+2936554]
+	GetHandleVerifier [0x0x7ff63d0d8977+3070247]
+	GetHandleVerifier [0x0x7ff63ce183ce+185214]
+	GetHandleVerifier [0x0x7ff63ce1fe1f+216527]
+	GetHandleVerifier [0x0x7ff63ce07b24+117460]
+	GetHandleVerifier [0x0x7ff63ce07cdf+117903]
+	GetHandleVerifier [0x0x7ff63cdedbb8+11112]
+	BaseThreadInitThunk [0x0x7ffe50dee8d7+23]
+	RtlUserThreadStart [0x0x7ffe52b4c53c+44]
+</msg>
+<msg time="2025-10-24T20:58:12.917157" level="FAIL">WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=141.0.7390.122)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff63cdfe8e5+80021]
+	GetHandleVerifier [0x0x7ff63cdfe940+80112]
+	(No symbol) [0x0x7ff63cb80425]
+	(No symbol) [0x0x7ff63cb6d4aa]
+	(No symbol) [0x0x7ff63cb6c34f]
+	(No symbol) [0x0x7ff63cb9177a]
+	(No symbol) [0x0x7ff63cb90a76]
+	(No symbol) [0x0x7ff63cc299f6]
+	(No symbol) [0x0x7ff63cc01003]
+	(No symbol) [0x0x7ff63cbc95d1]
+	(No symbol) [0x0x7ff63cbca3f3]
+	GetHandleVerifier [0x0x7ff63d0bdc7d+2960429]
+	GetHandleVerifier [0x0x7ff63d0b7f3a+2936554]
+	GetHandleVerifier [0x0x7ff63d0d8977+3070247]
+	GetHandleVerifier [0x0x7ff63ce183ce+185214]
+	GetHandleVerifier [0x0x7ff63ce1fe1f+216527]
+	GetHandleVerifier [0x0x7ff63ce07b24+117460]
+	GetHandleVerifier [0x0x7ff63ce07cdf+117903]
+	GetHandleVerifier [0x0x7ff63cdedbb8+11112]
+	BaseThreadInitThunk [0x0x7ffe50dee8d7+23]
+	RtlUserThreadStart [0x0x7ffe52b4c53c+44]
+</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-10-09T18:26:17.729486" elapsed="8.193436"/>
+<status status="FAIL" start="2025-10-24T20:58:05.936500" elapsed="7.005221">WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=141.0.7390.122)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff63cdfe8e5+80021]
+	GetHandleVerifier [0x0x7ff63cdfe940+80112]
+	(No symbol) [0x0x7ff63cb80425]
+	(No symbol) [0x0x7ff63cb6d4aa]
+	(No symbol) [0x0x7ff63cb6c34f]
+	(No symbol) [0x0x7ff63cb9177a]
+	(No symbol) [0x0x7ff63cb90a76]
+	(No symbol) [0x0x7ff63cc299f6]
+	(No symbol) [0x0x7ff63cc01003]
+	(No symbol) [0x0x7ff63cbc95d1]
+	(No symbol) [0x0x7ff63cbca3f3]
+	GetHandleVerifier [0x0x7ff63d0bdc7d+2960429]
+	GetHandleVerifier [0x0x7ff63d0b7f3a+2936554]
+	GetHandleVerifier [0x0x7ff63d0d8977+3070247]
+	GetHandleVerifier [0x0x7ff63ce183ce+185214]
+	GetHandleVerifier [0x0x7ff63ce1fe1f+216527]
+	GetHandleVerifier [0x0x7ff63ce07b24+117460]
+	GetHandleVerifier [0x0x7ff63ce07cdf+117903]
+	GetHandleVerifier [0x0x7ff63cdedbb8+11112]
+	BaseThreadInitThunk [0x0x7ffe50dee8d7+23]
+	RtlUserThreadStart [0x0x7ffe52b4c53c+44]
+</status>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-10-09T18:26:25.954289" elapsed="0.117405"/>
+<status status="NOT RUN" start="2025-10-24T20:58:12.948183" elapsed="0.000654"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:26.079453" level="INFO">Clicking element 'xpath=//*[@id="privacy_checkbox"]'.</msg>
 <arg>xpath=//*[@id="privacy_checkbox"]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:26.075148" elapsed="0.261525"/>
+<status status="NOT RUN" start="2025-10-24T20:58:12.952232" elapsed="0.000805"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:26.338529" level="INFO">Clicking element 'xpath=//*[@id="privacy_modal"]/div/div[2]/form/button'.</msg>
 <arg>xpath=//*[@id="privacy_modal"]/div/div[2]/form/button</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:26.337472" elapsed="0.266563"/>
+<status status="NOT RUN" start="2025-10-24T20:58:12.961974" elapsed="0.000628"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:26.606096" level="INFO">Clicking element 'id=btn-login'.</msg>
 <arg>id=btn-login</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:26.604954" elapsed="0.384292"/>
+<status status="NOT RUN" start="2025-10-24T20:58:12.965071" elapsed="0.000669"/>
 </kw>
 <kw name="Login With Google OAuth" owner="keywords">
-<kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:27.003879" level="INFO">${main_window} = ['FFBD9CDB5EBB7A3538C7D63285A1DD53']</msg>
-<var>${main_window}</var>
-<doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-09T18:26:26.992551" elapsed="0.011827"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-09T18:26:32.006379" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-09T18:26:27.005056" elapsed="5.002478"/>
-</kw>
-<kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:32.026741" level="INFO">${all_windows} = ['FFBD9CDB5EBB7A3538C7D63285A1DD53', '3262AE6971B4B4918C41794DD7D4B948']</msg>
-<var>${all_windows}</var>
-<doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-09T18:26:32.008047" elapsed="0.019264"/>
-</kw>
-<kw name="Switch Window" owner="SeleniumLibrary">
-<arg>${all_windows}[1]</arg>
-<doc>Switches to browser window matching ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:32.027840" elapsed="0.137471"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>id=identifierId</arg>
-<arg>timeout=10s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2025-10-09T18:26:32.173908" elapsed="1.735606"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:33.910890" level="INFO">Clicking element 'id=identifierId'.</msg>
-<arg>id=identifierId</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:33.910010" elapsed="1.051131"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:34.962437" level="INFO">Typing text '654259027' into text field 'id=identifierId'.</msg>
-<arg>id=identifierId</arg>
-<arg>${username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:34.961528" elapsed="0.835060"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>xpath=//*[@id="identifierNext"]/div/button/span</arg>
-<arg>timeout=10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-09T18:26:35.797045" elapsed="0.120341"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:35.918882" level="INFO">Clicking element 'xpath=//*[@id="identifierNext"]/div/button/span'.</msg>
-<arg>xpath=//*[@id="identifierNext"]/div/button/span</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:35.917945" elapsed="0.631050"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>name=Passwd</arg>
-<arg>timeout=10s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-09T18:26:36.549629" elapsed="2.600324"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:39.151474" level="INFO">Typing text '166889966' into text field 'name=Passwd'.</msg>
-<arg>name=Passwd</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:39.150420" elapsed="1.266052"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:40.418075" level="INFO">Clicking element 'xpath=//*[@id="passwordNext"]/div/button/span'.</msg>
-<arg>xpath=//*[@id="passwordNext"]/div/button/span</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:40.417146" elapsed="0.506782"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-09T18:26:50.925786" level="INFO">Slept 10 seconds.</msg>
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-09T18:26:40.924460" elapsed="10.001843"/>
-</kw>
-<kw name="Switch Window" owner="SeleniumLibrary">
-<arg>${main_window}[0]</arg>
-<doc>Switches to browser window matching ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:50.926675" elapsed="0.012743"/>
-</kw>
 <arg>${USERNAME}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2025-10-09T18:26:26.990774" elapsed="23.948924"/>
+<status status="NOT RUN" start="2025-10-24T20:58:12.969456" elapsed="0.000796"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-09T18:26:55.941594" level="INFO">Slept 5 seconds.</msg>
 <arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-09T18:26:50.940242" elapsed="5.002268"/>
+<status status="NOT RUN" start="2025-10-24T20:58:12.972240" elapsed="0.001488"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:55.969797" level="INFO">Current page contains text 'รายชื่อบุคลากร'.</msg>
 <arg>รายชื่อบุคลากร</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-10-09T18:26:55.945836" elapsed="0.024330"/>
+<status status="NOT RUN" start="2025-10-24T20:58:12.979540" elapsed="0.000620"/>
 </kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:26:55.971562" level="INFO">Clicking element 'xpath=//*[@id="btn-switch-navbar"]'.</msg>
-<arg>xpath=//*[@id="btn-switch-navbar"]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-09T18:26:55.970702" elapsed="0.308383"/>
+<kw name="Add Teacher">
+<status status="NOT RUN" start="2025-10-24T20:58:12.986230" elapsed="0.000528"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-09T18:27:01.305390" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-09T18:26:56.303769" elapsed="5.002284"/>
+<kw name="Prefix Dropdown">
+<arg>นาย</arg>
+<status status="NOT RUN" start="2025-10-24T20:58:12.995431" elapsed="0.000558"/>
 </kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-09T18:27:01.307831" level="INFO">Clicking element 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]'.</msg>
-<msg time="2025-10-09T18:27:01.461114" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-10-09T18:27:01.461788" level="FAIL">Element with locator 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]' not found.</msg>
-<arg>xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="FAIL" start="2025-10-09T18:27:01.306672" elapsed="0.172194">Element with locator 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]' not found.</status>
+<kw name="Input First Name">
+<arg>สมโรง</arg>
+<status status="NOT RUN" start="2025-10-24T20:58:12.996603" elapsed="0.000558"/>
 </kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<arg>xpath=//*[@id="manage_student_68e6bb2e7a3a9c428012c369"]/div/div/a[1]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="NOT RUN" start="2025-10-09T18:27:01.479431" elapsed="0.000492"/>
+<kw name="Input Last Name">
+<arg>นานาศึก</arg>
+<status status="NOT RUN" start="2025-10-24T20:58:13.002194" elapsed="0.000592"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-10-09T18:27:01.480314" elapsed="0.000320"/>
+<kw name="Input User ID">
+<arg>019</arg>
+<status status="NOT RUN" start="2025-10-24T20:58:13.004737" elapsed="0.003696"/>
 </kw>
-<kw name="Answer SDQ Page 1">
-<status status="NOT RUN" start="2025-10-09T18:27:01.481090" elapsed="0.000293"/>
+<kw name="Input Phone Number">
+<arg>0864475134</arg>
+<status status="NOT RUN" start="2025-10-24T20:58:13.013867" elapsed="0.000630"/>
 </kw>
-<kw name="Answer SDQ Page 2">
-<status status="NOT RUN" start="2025-10-09T18:27:01.481711" elapsed="0.000258"/>
-</kw>
-<kw name="Answer SDQ Page 3">
-<status status="NOT RUN" start="2025-10-09T18:27:01.482950" elapsed="0.001113"/>
-</kw>
-<kw name="Answer SDQ Page 4">
-<status status="NOT RUN" start="2025-10-09T18:27:01.484896" elapsed="0.000541"/>
-</kw>
-<kw name="Answer SDQ Page 5">
-<status status="NOT RUN" start="2025-10-09T18:27:01.486351" elapsed="0.000607"/>
-</kw>
-<kw name="Answer SDQ Page 6">
-<status status="NOT RUN" start="2025-10-09T18:27:01.487807" elapsed="0.000569"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<arg>3s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="NOT RUN" start="2025-10-09T18:27:01.488891" elapsed="0.000564"/>
-</kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<arg>เพิ่มข้อมูล SDQ สำเร็จ</arg>
-<arg>timeout=10s</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="NOT RUN" start="2025-10-09T18:27:01.490017" elapsed="0.001256"/>
+<kw name="Submit Personnel Info">
+<status status="NOT RUN" start="2025-10-24T20:58:13.018840" elapsed="0.000513"/>
 </kw>
 <kw name="Capture Page Screenshot With Name">
-<arg>TC9001_SDQ Assessment_Success</arg>
-<status status="NOT RUN" start="2025-10-09T18:27:01.491803" elapsed="0.000325"/>
+<arg>TC14001_Success</arg>
+<status status="NOT RUN" start="2025-10-24T20:58:13.020547" elapsed="0.000606"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-10-09T18:27:01.492470" elapsed="0.000474"/>
+<status status="NOT RUN" start="2025-10-24T20:58:13.029599" elapsed="0.000590"/>
 </kw>
-<doc>ทดสอบการประเมิน SDQ ของคุณครู</doc>
-<status status="FAIL" start="2025-10-09T18:26:17.694560" elapsed="43.798900">Element with locator 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]' not found.</status>
+<doc>Test case to add new personnel with valid data</doc>
+<status status="FAIL" start="2025-10-24T20:58:05.922187" elapsed="7.128727">WebDriverException: Message: target frame detached
+  (failed to check if window was closed: disconnected: Unable to receive message from renderer)
+  (Session info: chrome=141.0.7390.122)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff63cdfe8e5+80021]
+	GetHandleVerifier [0x0x7ff63cdfe940+80112]
+	(No symbol) [0x0x7ff63cb80425]
+	(No symbol) [0x0x7ff63cb6d4aa]
+	(No symbol) [0x0x7ff63cb6c34f]
+	(No symbol) [0x0x7ff63cb9177a]
+	(No symbol) [0x0x7ff63cb90a76]
+	(No symbol) [0x0x7ff63cc299f6]
+	(No symbol) [0x0x7ff63cc01003]
+	(No symbol) [0x0x7ff63cbc95d1]
+	(No symbol) [0x0x7ff63cbca3f3]
+	GetHandleVerifier [0x0x7ff63d0bdc7d+2960429]
+	GetHandleVerifier [0x0x7ff63d0b7f3a+2936554]
+	GetHandleVerifier [0x0x7ff63d0d8977+3070247]
+	GetHandleVerifier [0x0x7ff63ce183ce+185214]
+	GetHandleVerifier [0x0x7ff63ce1fe1f+216527]
+	GetHandleVerifier [0x0x7ff63ce07b24+117460]
+	GetHandleVerifier [0x0x7ff63ce07cdf+117903]
+	GetHandleVerifier [0x0x7ff63cdedbb8+11112]
+	BaseThreadInitThunk [0x0x7ffe50dee8d7+23]
+	RtlUserThreadStart [0x0x7ffe52b4c53c+44]
+</status>
 </test>
-<doc>ฟังก์ชั่นแบบฟอร์มประเมิน SDQ (คุณครู)</doc>
-<status status="FAIL" start="2025-10-09T18:26:15.836222" elapsed="45.671888"/>
+<doc>ชุดการทดสอบสำหรับระบบจัดการข้อมูลบุคลากร (Personnel Management)</doc>
+<status status="FAIL" start="2025-10-24T20:58:04.101487" elapsed="9.002119"/>
 </suite>
-<status status="FAIL" start="2025-10-09T18:26:15.761994" elapsed="45.755965"/>
+<status status="FAIL" start="2025-10-24T20:58:04.079223" elapsed="9.058618"/>
 </suite>
-<status status="FAIL" start="2025-10-09T18:26:15.453962" elapsed="46.076681"/>
+<status status="FAIL" start="2025-10-24T20:58:03.968893" elapsed="9.192619"/>
 </suite>
 <statistics>
 <total>
@@ -220,9 +199,34 @@
 <suite>
 <stat name="Robot UV" id="s1" pass="0" fail="1" skip="0">Robot UV</stat>
 <stat name="Tests" id="s1-s1" pass="0" fail="1" skip="0">Robot UV.Tests</stat>
-<stat name="Robot-06-Teacher Sdq" id="s1-s1-s1" pass="0" fail="1" skip="0">Robot UV.Tests.Robot-06-Teacher Sdq</stat>
+<stat name="Robot-02-Personnel" id="s1-s1-s1" pass="0" fail="1" skip="0">Robot UV.Tests.Robot-02-Personnel</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2025-10-24T20:58:12.884680" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=141.0.7390.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	GetHandleVerifier [0x0x7ff63cdfe8e5+80021]
+	GetHandleVerifier [0x0x7ff63cdfe940+80112]
+	(No symbol) [0x0x7ff63cb8060f]
+	(No symbol) [0x0x7ff63cb6c145]
+	(No symbol) [0x0x7ff63cb9177a]
+	(No symbol) [0x0x7ff63cc08b06]
+	(No symbol) [0x0x7ff63cc28fa2]
+	(No symbol) [0x0x7ff63cc01003]
+	(No symbol) [0x0x7ff63cbc95d1]
+	(No symbol) [0x0x7ff63cbca3f3]
+	GetHandleVerifier [0x0x7ff63d0bdc7d+2960429]
+	GetHandleVerifier [0x0x7ff63d0b7f3a+2936554]
+	GetHandleVerifier [0x0x7ff63d0d8977+3070247]
+	GetHandleVerifier [0x0x7ff63ce183ce+185214]
+	GetHandleVerifier [0x0x7ff63ce1fe1f+216527]
+	GetHandleVerifier [0x0x7ff63ce07b24+117460]
+	GetHandleVerifier [0x0x7ff63ce07cdf+117903]
+	GetHandleVerifier [0x0x7ff63cdedbb8+11112]
+	BaseThreadInitThunk [0x0x7ffe50dee8d7+23]
+	RtlUserThreadStart [0x0x7ffe52b4c53c+44]
+</msg>
 </errors>
 </robot>
