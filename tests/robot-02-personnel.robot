@@ -41,10 +41,10 @@ TC1401 - Add New Personnel Successfully
     Add Teacher     
     # --- กรอกข้อมูลบุคลากร ---
     Prefix Dropdown    นาย 
-    Input First Name    สมปอง
-    Input Last Name    ทองแดน
-    Input User ID    020
-    Input Phone Number    0697745138
+    Input First Name    สมชาย
+    Input Last Name    กตัญญู
+    Input User ID    021
+    Input Phone Number    0652686968
     Submit Personnel Info
     
     Capture Page Screenshot with Name    TC14001_Success
@@ -398,9 +398,9 @@ TC1411 Edit Personnel Successfully
     # --- กรอกข้อมูลบุคลากร ---   
     # Prefix Dropdown    นางสาว
     Edit Prefix Dropdown    นางสาว
-    Input First Name        สมหญิง
-    Input Last Name         เปลี่ยนนามสกุล
-    Input Phone Number      0801234567
+    Input First Name        พิมพรหญิง
+    Input Last Name         สุขดี
+    Input Phone Number      0864479528
     Status Dropdown    ไม่ได้ใช้งานแล้ว
     Save Edit Personnel
  
