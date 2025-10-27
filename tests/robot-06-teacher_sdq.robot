@@ -6,12 +6,7 @@ Resource     ../resources/keywords.robot
 Resource     ../resources/variables.robot
 
 *** Variables ***
-@{ANSWERS_PAGE_1}    ไม่จริง    ไม่จริง    จริง    ไม่จริง    ไม่จริง
-@{ANSWERS_PAGE_2}    ไม่จริง    ค่อนข้างจริง    จริง    ไม่จริง    ไม่จริง            
-@{ANSWERS_PAGE_3}    ไม่จริง    ไม่จริง    ไม่จริง    ค่อนข้างจริง    จริง
-@{ANSWERS_PAGE_4}    ไม่จริง    จริง    ค่อนข้างจริง    ไม่จริง    ไม่จริง
-@{ANSWERS_PAGE_5}    ค่อนข้างจริง    จริง    จริง    จริง    จริง
-@{ANSWERS_PAGE_6}    ใช่ มีปัญหาอย่างมาก    6-12 เดือน    มาก    มาก    ไม่เลย
+
 
 *** Test Cases ***
 
@@ -41,9 +36,9 @@ TC9001 - คุณครูทำแบบประเมิน SDQ ประเ
     ํYear Dropdown    2568
     Sleep    3s
     # --- เลือกนักเรียน ---
-    Click Element  xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]
+    Click Element  xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[5]/td[1]
     # --- กดปุ่มประเมิน SDQ ---
-    Click Element  xpath=//*[@id="manage_student_68e6bb2e7a3a9c428012c369"]/div/div/a[1]
+    Click Element  xpath=//*[@id="manage_student_68ca61cdbd8da69c0f327228"]/div/div/a[1]
     Sleep    5s
     # --- ทำแบบฟอร์มประเมิน SDQ ---
     Answer SDQ Page 1
@@ -83,17 +78,17 @@ TC9002 - คุณครูทำแบบประเมิน SDQ ประเ
     # --- เลือกปี ---
     ํYear Dropdown    2568
     # --- เลือกนักเรียน ---
-    Click Element  xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[7]/td[1]
+    Click Element  xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[6]/td[1]
     # --- กดปุ่มประเมิน SDQ ---
-    Click Element  xpath=//*[@id="manage_student_68e0f4352e5494aa22a37436"]/div/div/a[1]
+    Click Element  xpath=//*[@id="manage_student_68e6bb2e7a3a9c428012c369"]/div/div/a[1]
     Sleep    5s
-    # --- กดบันทึกข้อมูล ---
-    Click Button    xpath=//*[@id="submit-button"]
+    # --- ถัดไปหน้า 2 ---
+    Click Button    xpath=//*[@id="next-button-page1"]
     # --- ตรวจสอบผลลัพธ์ ---
     Wait Until Element Is Visible    xpath=//*[@id="root"]/div[2]/div/form/div/div/div[2]/div[1]/div[5]/div[2]    timeout=10s
     Element Text Should Be    xpath=//*[@id="root"]/div[2]/div/form/div/div/div[2]/div[1]/div[5]/div[2]    กรุณาเลือกคำตอบ
 
-    Capture Page Screenshot With Name    TC9001_SDQ Assessment_Error
+    Capture Page Screenshot With Name    TC9002_SDQ Assessment_Error
     Close Browser
 
 
@@ -103,52 +98,59 @@ TC9002 - คุณครูทำแบบประเมิน SDQ ประเ
     Select From List By Label    xpath=//*[@id="year-selector"]    ${YEAR}
 
 Answer SDQ Page 1
-    FOR    ${index}    ${answer}    IN ENUMERATE    @{ANSWERS_PAGE_1}
-        ${q_index}=    Evaluate    ${index} + 1
-        Select Answer    (//div[@class="mr-3 radio"])[${q_index}]    ${answer}
-    END
+    Click Element    xpath=//*[@id="question_3_0"]
+    Click Element    xpath=//*[@id="question_8_0"]
+    Click Element    xpath=//*[@id="question_13_2"]
+    Click Element    xpath=//*[@id="question_16_0"]
+    Click Element    xpath=//*[@id="question_24_0"]
+    # --- ถัดไปหน้า 2 ---
     Click Button    xpath=//*[@id="next-button-page1"]
+    Sleep    2s
 
 Answer SDQ Page 2
-    FOR    ${index}    ${answer}    IN ENUMERATE    @{ANSWERS_PAGE_2}
-        ${q_index}=    Evaluate    ${index} + 1
-        Select Answer    (//div[@class="mr-3 radio"])[${q_index}]    ${answer}
-    END
+    Click Element    xpath=//*[@id="question_5_0"]
+    Click Element    xpath=//*[@id="question_7_1"]
+    Click Element    xpath=//*[@id="question_12_2"]
+    Click Element    xpath=//*[@id="question_18_0"]
+    Click Element    xpath=//*[@id="question_22_0"]
+    # --- ถัดไปหน้า 3 ---
     Click Button    xpath=//*[@id="next-button-page2"]
 
 Answer SDQ Page 3
-    FOR    ${index}    ${answer}    IN ENUMERATE    @{ANSWERS_PAGE_3}
-        ${q_index}=    Evaluate    ${index} + 1
-        Select Answer    (//div[@class="mr-3 radio"])[${q_index}]    ${answer}
-    END
+    Click Element    xpath=//*[@id="question_2_0"]
+    Click Element    xpath=//*[@id="question_10_0"]
+    Click Element    xpath=//*[@id="question_15_0"]
+    Click Element    xpath=//*[@id="question_21_1"]
+    Click Element    xpath=//*[@id="question_25_2"]
+    # --- ถัดไปหน้า 4 ---
     Click Button    xpath=///*[@id="next-button-page3"]
 
 Answer SDQ Page 4
-    FOR    ${index}    ${answer}    IN ENUMERATE    @{ANSWERS_PAGE_4}
-        ${q_index}=    Evaluate    ${index} + 1
-        Select Answer    (//div[@class="mr-3 radio"])[${q_index}]    ${answer}
-    END
+    Click Element    xpath=//*[@id="question_6_0"]
+    Click Element    xpath=//*[@id="question_11_2"]
+    Click Element    xpath=//*[@id="question_14_1"]
+    Click Element    xpath=//*[@id="question_19_0"]
+    Click Element    xpath=//*[@id="question_23_0"]
+    # --- ถัดไปหน้า 5 ---
     Click Button    xpath=//*[@id="next-button-page4"]
 
 Answer SDQ Page 5
-    FOR    ${index}    ${answer}    IN ENUMERATE    @{ANSWERS_PAGE_5}
-        ${q_index}=    Evaluate    ${index} + 1
-        Select Answer    (//div[@class="mr-3 radio"])[${q_index}]    ${answer}
-    END
+    Click Element    xpath=//*[@id="question_1_1"]
+    Click Element    xpath=//*[@id="question_4_2"]
+    Click Element    xpath=//*[@id="question_9_2"]
+    Click Element    xpath=//*[@id="question_17_2"]
+    Click Element    xpath=//*[@id="question_20_2"]
+    # --- ถัดไปหน้า 6 ---
     Click Button    xpath=//*[@id="next-button-page5"]
 
 Answer SDQ Page 6
-    FOR    ${index}    ${answer}    IN ENUMERATE    @{ANSWERS_PAGE_6}
-        ${q_index}=    Evaluate    ${index} + 1
-        Select Answer    (//div[@class="mr-3 radio"])[${q_index}]    ${answer}
-    END
+    Click Element    xpath=//*[@id="overall_problem_3"]
+    Click Element    xpath=//*[@id="problem_time_2"]
+    Click Element    xpath=//*[@id="is_uneasy_student_3"]
+    Click Element    xpath=//*[@id="is_annoy_student_3"]
+    Click Element    xpath=//*[@id="is_difficult_student_0"]
+    # --- ส่งแบบฟอร์ม ---
     Click Button    xpath=//*[@id="submit-button"]
-
-Select Answer
-    [Arguments]    ${question_xpath}    ${choice}
-    ${option_xpath}=    Set Variable    ${question_xpath}//label[contains(., "${choice}")]
-    Click Element    ${option_xpath}
-
 
 Capture Page Screenshot With Name
     [Arguments]    ${test_case_name}

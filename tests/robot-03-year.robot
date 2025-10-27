@@ -92,9 +92,9 @@ TC1703 - เจ้าหน้าที่ฝ่ายทะเบียนแ�
     # --- Delay ---
     Sleep  5s
     # --- กดปุ่ม 3 จุด ---
-    Click Element    xpath=//*[@id="dropdown_68fc9b41ff0ca9eb99eeed7c"]
+    Click Element    xpath=//*[@id="dropdown_68feb9865d1e6e2460e0505c"]
     # --- กดปุ่ม แก้ไข ---
-    Click Element    xpath=//*[@id="edit_year_68fc9b41ff0ca9eb99eeed7c"]
+    Click Element    xpath=//*[@id="edit_year_68feb9865d1e6e2460e0505c"]
     # --- แก้ไขปีการศึกษา ---
     Edit Academic Year   
   
@@ -126,9 +126,9 @@ TC1704 - เจ้าหน้าที่ฝ่ายทะเบียนแ�
     # --- Delay ---
     Sleep  5s
     # --- กดปุ่ม 3 จุด ---
-    Click Element    xpath=//*[@id="dropdown_68fc9d9fff0ca9eb99eeee7d"]
+    Click Element    xpath=//*[@id="dropdown_68feb9865d1e6e2460e0505c"]
     # --- กดปุ่ม แก้ไข ---
-    Click Element    xpath=//*[@id="edit_year_68fc9d9fff0ca9eb99eeee7d"]
+    Click Element    xpath=//*[@id="edit_year_68feb9865d1e6e2460e0505c"]
     # --- แก้ไขปีการศึกษา ---
     Edit Academic Year Error
 
@@ -159,9 +159,9 @@ TC1705 - เจ้าหน้าที่ฝ่ายทะเบียนแ�
     # --- Delay ---
     Sleep  5s
     # --- กดปุ่ม 3 จุด ---
-    Click Element    xpath=//*[@id="dropdown_68fc9b41ff0ca9eb99eeed7c"]
+    Click Element    xpath=//*[@id="dropdown_68feb9865d1e6e2460e0505c"]
     # --- กดปุ่ม แก้ไข ---
-    Click Element    xpath=//*[@id="edit_year_68fc9b41ff0ca9eb99eeed7c"]
+    Click Element    xpath=//*[@id="edit_year_68feb9865d1e6e2460e0505c"]
     # --- แก้ไขปีการศึกษาเป็นปีที่มีอยู่แล้ว ---
     Edit Existing Academic Year
 
@@ -192,9 +192,9 @@ TC1706 - เจ้าหน้าที่ฝ่ายทะเบียนล�
     # --- Delay ---
     Sleep  5s
     # --- กดปุ่ม 3 จุด ---
-    Click Element    xpath=//*[@id="dropdown_68fcb049ff0ca9eb99eef218"]
+    Click Element    xpath=//*[@id="dropdown_68feb9865d1e6e2460e0505c"]
     # --- กดปุ่มลบ ---
-    Click Element    xpath=//*[@id="delete_year_68fcb049ff0ca9eb99eef218"]
+    Click Element    xpath=//*[@id="delete_year_68feb9865d1e6e2460e0505c"]
     # --- กดปุ่มยืนยันการลบ ---
     Delete Academic Year Confirm
 
@@ -222,7 +222,7 @@ Edit Academic Year
     Sleep                   0.3s
     Input Text              ${ACADEMIC_YEAR_FIELD}    2571
     Sleep                   0.3s
-    Click Button            xpath=//*[@id="Edit_year_68fc9b41ff0ca9eb99eeed7c"]/div/form/div[2]/button[1]
+    Click Button            xpath=//*[@id="Edit_year_68feb9865d1e6e2460e0505c"]/div/form/div[2]/button[1]
     Wait Until Page Contains   แก้ไขปีการศึกษาเรียบร้อยแล้ว   timeout=15s
 
 Edit Existing Academic Year
@@ -236,7 +236,7 @@ Edit Existing Academic Year
     Sleep                   0.3s
     Input Text              ${ACADEMIC_YEAR_FIELD}    2568
     Sleep                   0.3s
-    Click Button            xpath=//*[@id="Edit_year_68fc9b41ff0ca9eb99eeed7c"]/div/form/div[2]/button[1]
+    Click Button            xpath=//*[@id="Edit_year_68feb9865d1e6e2460e0505c"]/div/form/div[2]/button[1]
     Wait Until Page Contains   ปีการศึกษา 2568 มีอยู่แล้ว   timeout=15s
 
 
@@ -245,14 +245,14 @@ Edit Academic Year Error
     Sleep                   0.3s
     Input Text              ${ACADEMIC_YEAR_FIELD}    0
     Sleep                   0.3s
-    Click Button            xpath=//*[@id="Edit_year_68fc9d9fff0ca9eb99eeee7d"]/div/form/div[2]/button[1]
+    Click Button            xpath=//*[@id="Edit_year_68feb9865d1e6e2460e0505c"]/div/form/div[2]/button[1]
     Wait Until Page Contains   xpath=//*[@id="year-error"]   timeout=15s
     Element Text Should Be    xpath=//*[@id="year-error"]    กรุณากรอกปีการศึกษาให้ถูกต้อง
 
 
 Delete Academic Year Confirm
     Click Element   xpath=/html/body/div[2]/div/div[6]/button[1]
-    Wait Until Page Contains   ลบปีการศึกษา 2572 สำเร็จ   timeout=15s
+    Wait Until Page Contains   ลบปีการศึกษา 2571 สำเร็จ   timeout=15s
     
 
 Capture Page Screenshot With Name

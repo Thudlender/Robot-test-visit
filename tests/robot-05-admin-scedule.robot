@@ -28,16 +28,29 @@ TC1901 - เจ้าหน้าที่ฝ่ายทะเบียนก�
     Page Should Contain    รายชื่อบุคลากร
     # --- หน้าจัดการชั้นเรียน ---
     Click Element  xpath=//*[@id="root"]/div[1]/div[2]/ul/li[5]/a
-    # --- Delay ---
     Sleep  5s
+    # --- เลือกปีการศึกษา ---
+    Select Year From Dropdown    2569
+    # --- ปฏิทินเริ่มนัดเยี่ยมบ้าน ---
+    Input Text    xpath=//*[@id="root"]/div[2]/div/div[2]/div[2]/div/div/form/div[1]/div[1]/input    05/30/2026
+    Sleep    2s
+    # --- ปฏิทินสิ้นสุดนัดเยี่ยมบ้าน ---
+    Input Text    xpath=//*[@id="root"]/div[2]/div/div[2]/div[2]/div/div/form/div[1]/div[2]/input    08/29/2026
+    Sleep    2s
+    # --- ปุ่มบันทึกช่วงเวลานัดเยี่ยมบ้าน ---
+    Click Element    xpath=//*[@id="root"]/div[2]/div/div[2]/div[2]/div/div/form/div[2]/button
+    Wait Until Page Contains   กำหนดช่วงเวลานัดหมาย สำเร็จ   timeout=15s
+
+     # Capture Screenshot
 
     Capture Page Screenshot With Name    TC1901_Admin_Schedule_Success
     Close Browser
 
 *** Keywords ***
 
-
-
+Select Year From Dropdown
+    [Arguments]    ${year}
+    Select From List By Label    xpath=//*[@id="year-selector"]    ${year}
 
 Capture Page Screenshot With Name
     [Arguments]    ${test_case_name}
