@@ -6,34 +6,48 @@ Resource     ../resources/keywords.robot
 Resource     ../resources/variables.robot
 
 *** Variables ***
-${PREFIX_DROPDOWN}    id:prefix
-${FIRST_NAME_FIELD}    id:first_name
-${LAST_NAME_FIELD}     id:last_name
-${USER_ID_FIELD}       id:user_id    
-${PHONE_NUMBER_FIELD}  id:phone
-${STATUS_DROPDOWN}          id:status
+${PREFIX_DROPDOWN}    id:prefix_add
+${FIRST_NAME_FIELD}    id:first_name_add
+${LAST_NAME_FIELD}     id:last_name_add
+${USER_ID_FIELD}       id:user_id_add
+${PHONE_NUMBER_FIELD}  id:phone_add
+
+${PREFIX_DROPDOWN_EDIT}    id:prefix_edit
+${FIRST_NAME_FIELD_EDIT}    id:first_name_edit
+${LAST_NAME_FIELD_EDIT}     id:last_name_edit
+${PHONE_NUMBER_FIELD_EDIT}  id:phone_edit
+${STATUS_DROPDOWN}          id:status_edit
 
 ${selected_prefix} =    Get Selected List Label    ${PREFIX_DROPDOWN}
 ${selected_status} =    Get Selected List Label    ${STATUS_DROPDOWN}
 
-${PREFIX_ERROR_MSG}    id="error_prefix"
-${FIRST_NAME_ERROR_MSG}    id="error_firstname"
-${LAST_NAME_ERROR_MSG}     id="error_lastname"
+${PREFIX_ERROR_MSG}    id="prefix-error" 
+${FIRST_NAME_ERROR_MSG}    id="first_name-error" 
+${LAST_NAME_ERROR_MSG}     //*[@id="last_name-error"]
 ${USER_ID_ERROR_MSG}    id="error_userid"
 ${PHONE_NUMBER_ERROR_MSG}  id="error_phone"
+
+${ADD_PERSONNEL_SUBMIT_BUTTON}    xpath=//button[@id="add-personnel-submit-button"]
 
 
 *** Test Cases ***
     
-TC1401 - Add New Personnel Successfully
-    [Documentation]    Test case to add new personnel with valid data
+TC1401 - เจ้าหน้าที่ฝ่ายทะเบียนเพิ่มบัญชีคุณครูที่ปรึกษาสำเร็จ
+    [Documentation]    ทดสอบการเพิ่มบัญชีคุณครูที่ปรึกษาใหม่โดยเจ้าหน้าที่ฝ่ายทะเบียน
 
+    # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
+    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
     Maximize Browser Window
+    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
     Click Element    xpath=//*[@id="privacy_checkbox"]
+    # คลิกปุ่ม เข้าใจและยอมรับ
     Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
+    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
     Click Element    id=btn-login
+    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
     Login With Google OAuth    ${USERNAME}    ${PASSWORD}
+    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
     Sleep    5s
     # --- Verify Login Page ---
     Page Should Contain    รายชื่อบุคลากร
@@ -41,16 +55,16 @@ TC1401 - Add New Personnel Successfully
     Add Teacher     
     # --- กรอกข้อมูลบุคลากร ---
     Prefix Dropdown    นาย 
-    Input First Name    สมชาย
-    Input Last Name    กตัญญู
-    Input User ID    021
-    Input Phone Number    0652686968
-    Submit Personnel Info
+    Input First Name    สมรักษ์
+    Input Last Name    ศรัทธา
+    Input User ID    022
+    Input Phone Number    0686548694
+    Submit Personnel Info Success
     
-    Capture Page Screenshot with Name    TC14001_Success
+    Capture Page Screenshot with Name    TC1401_Success
     Close Browser
 
-TC1402 - Add New Personnel without selecting prefix
+TC1402 - เพิ่มบุคลากรใหม่โดยไม่กรอกหรือเลือกข้อมูลใดๆเลย
     [Documentation]    Test case to add new personnel without selecting prefix
    
      # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
@@ -72,21 +86,14 @@ TC1402 - Add New Personnel without selecting prefix
     Page Should Contain    รายชื่อบุคลากร
     # --- Add Personnel Button ---
     Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Input First Name     กิตติศักดิ์    
-    Input Last Name     สมบูรณ์
-    Input User ID     013
-    Input Phone Number     0652249576
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="prefix-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="prefix-error"]    กรุณาเลือกคำนำหน้า
+    # --- กดปุ่มบันทึกโดยไม่กรอกข้อมูลใดๆ ---
+    Submit Personnel No Info Error
 
-    Capture Page Screenshot With Name    TC14002_Validation
+    Capture Page Screenshot With Name    TC1402_Validation
     Close Browser
 
-TC1403 - Add New Personnel without First Name
-    [Documentation]    Test case to add new personnel without First Name
+TC1403 - เจ้าหน้าที่ฝ่ายทะเบียนเพิ่มบัญชีคุณครูที่ปรึกษาไม่สำเร็จ(กรอกข้อมูลทั้งหมดเป็นภาษาอังกฤษและตัวอักษรพิเศษ)
+    [Documentation]    ทดสอบการเพิ่มบัญชีคุณครูที่ปรึกษาใหม่โดยเจ้าหน้าที่ฝ่ายทะเบียน โดยกรอกข้อมูลทั้งหมดเป็นภาษาอังกฤษ
    
     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
@@ -109,268 +116,17 @@ TC1403 - Add New Personnel without First Name
     Add Teacher
     # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
     Prefix Dropdown    นาย
-    Input Last Name     สมบูรณ์
-    Input User ID     013
-    Input Phone Number     0652249576
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="first_name-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="first_name-error"]    กรุณากรอกชื่อ 
-
-    Capture Page Screenshot With Name    TC14003_Validation
-    Close Browser
-
-TC1404 - Add New Personnel without Last Name
-    [Documentation]    Test case to add new personnel without Last Name
-    
-    # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
-    Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
-    Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
-    Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
-    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
-    Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
-    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
-    Sleep    5s
-
-    # --- Verify Login Page ---
-    Page Should Contain    รายชื่อบุคลากร
-   # --- Add Personnel Button ---
-    Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Prefix Dropdown    นาย
-    Input First Name     กิตติศักดิ์ 
-    Input User ID     013
-    Input Phone Number     0652249576
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="last_name-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="last_name-error"]    กรุณากรอกนามสกุล
-
-    Capture Page Screenshot With Name    TC14004_Validation
-    Close Browser
-
-TC1405 Add New Personnel without User ID
-    [Documentation]    Test case to add new personnel without User ID
-    
-    # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
-    Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
-    Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
-    Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
-    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
-    Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
-    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
-    Sleep    5s
-
-    # --- Verify Login Page ---
-    Page Should Contain    รายชื่อบุคลากร
-    # --- Add Personnel Button ---
-    Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Prefix Dropdown    นาย
-    Input First Name     กิตติศักดิ์ 
-    Input Last Name     สมบูรณ์
-    Input Phone Number     0652249576
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="user_id-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="user_id-error"]    กรุณากรอกเลขที่ประจำตัวบุคลากร
-
-    Capture Page Screenshot With Name    TC14005_Validation
-    Close Browser
-
-TC1406 Add New Personnel without Phone Number
-    [Documentation]    Test case to add new personnel without Phone Number
-   
-     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
-    Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
-    Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
-    Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
-    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
-    Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
-    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
-    Sleep    5s
-
-    # --- Verify Login Page ---
-    Page Should Contain    รายชื่อบุคลากร
-    # --- Add Personnel Button ---
-    Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Prefix Dropdown    นาย
-    Input First Name     กิตติศักดิ์ 
-    Input Last Name     สมบูรณ์
-    Input User ID     013
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="phone-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="phone-error"]    กรุณากรอกเบอร์โทรศัพท์
-
-    Capture Page Screenshot With Name    TC14006_Validation
-    Close Browser
-
-TC1407 Add New Personnel But Input English First Name
-    [Documentation]    Test case to add new personnel But Input English First Name
-    
-     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
-    Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
-    Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
-    Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
-    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
-    Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
-    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
-    Sleep    5s
-
-    # --- Verify Login Page ---
-    Page Should Contain    รายชื่อบุคลากร
-    # --- Add Personnel Button ---
-    Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Prefix Dropdown    นาย
-    Input First Name     Kittisak
-    Input Last Name     สมบูรณ์
-    Input User ID     013
-    Input Phone Number     0652249576
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="first_name-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="first_name-error"]    จำเป็นต้องเป็นภาษาไทย
-
-    Capture Page Screenshot With Name    TC14007_Validation_EnglishFirstName
-    Close Browser
-
-TC1408 Add New Personnel But Input English Last Name
-    [Documentation]    Test case to add new personnel But Input English Last Name
-    
-     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
-    Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
-    Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
-    Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
-    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
-    Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
-    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
-    Sleep    5s
-
-    # --- Verify Login Page ---
-    Page Should Contain    รายชื่อบุคลากร
-    # --- Add Personnel Button ---
-    Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Prefix Dropdown    นาย
-    Input First Name     กิตติศักดิ์
-    Input Last Name     Somboon
-    Input User ID     013
-    Input Phone Number     0652249576
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="last_name-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="last_name-error"]    จำเป็นต้องเป็นภาษาไทย
-
-    Capture Page Screenshot With Name    TC14008_Validation_EnglishLastName
-    Close Browser
-
-TC1409 Add New Personnel But Input English And SpecialChar To User ID
-    [Documentation]    Test case to add new personnel But Input English And SpecialChar To User ID
-    
-     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
-    Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
-    Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
-    Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
-    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
-    Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
-    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
-    Sleep    5s
-
-    # --- Verify Login Page ---
-    Page Should Contain    รายชื่อบุคลากร
-    # --- Add Personnel Button ---
-    Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Prefix Dropdown    นาย
-    Input First Name     กิตติศักดิ์
-    Input Last Name     สมบูรณ์
-    Input User ID     zeroonethree#
-    Input Phone Number     0652249576
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="user_id-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="user_id-error"]    กรุณากรอกเลขที่ประจำตัวบุคลากรให้ถูกต้อง 
-
-    Capture Page Screenshot With Name    TC14009_Validation_EnglishAndSpecialCharUserID
-    Close Browser
-
-TC1410 Add New Personnel But Input English And SpecialChar To Phone Number
-    [Documentation]    Test case to add new personnel But Input English And SpecialChar To Phone Number
-   
-     # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
-    Open Browser    ${URL}    ${BROWSER}
-    # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
-    Maximize Browser Window
-    # คลิกที่ checkbox ยอมรับนโยบายความเป็นส่วนตัว
-    Click Element    xpath=//*[@id="privacy_checkbox"]
-    # คลิกปุ่ม เข้าใจและยอมรับ
-    Click Element    xpath=//*[@id="privacy_modal"]/div/div[2]/form/button
-    # คลิกปุ่ม login เพื่อเริ่มกระบวนการล็อกอิน
-    Click Element    id=btn-login
-    # เรียกใช้ keyword สำหรับล็อกอินผ่าน Google OAuth โดยส่ง username และ password
-    Login With Google OAuth    ${USERNAME}    ${PASSWORD}
-    # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
-    Sleep    5s
-
-    # --- Verify Login Page ---
-    Page Should Contain    รายชื่อบุคลากร
-    # --- Add Personnel Button ---
-    Add Teacher
-    # --- กรอกข้อมูลบุคลากรโดยที่ไม่เลือกคำนำหน้า
-    Prefix Dropdown    นาย
-    Input First Name     กิตติศักดิ์
-    Input Last Name     สมบูรณ์
-    Input User ID     013
+    Input First Name     Somrak@
+    Input Last Name     Sattha%
+    Input User ID     UserID^
     Input Phone Number     PhoneNumber#
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    # --- ตรวจสอบผลลัพธ์ ---
-    Wait Until Element Is Visible    xpath=//*[@id="phone-error"]    timeout=10s
-    Element Text Should Be    xpath=//*[@id="phone-error"]    กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง
+    Submit Personnel Eng Info Error
 
-    Capture Page Screenshot With Name    TC14010_Validation_EnglishAndSpecialCharPhoneNumber
+    Capture Page Screenshot With Name    TC1403_Validation
     Close Browser
 
-TC1411 Edit Personnel Successfully
-    [Documentation]    Test case to edit personnel information successfully
+TC1404 เจ้าหน้าที่ฝ่ายทะเบียนแก้ไขข้อมูลบัญชีคุณครูที่ปรึกษาสำเร็จ
+    [Documentation]    ทดสอบการแก้ไขข้อมูลบัญชีคุณครูที่ปรึกษาโดยเจ้าหน้าที่ฝ่ายทะเบียนสำเร็จ
     
      # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
@@ -391,24 +147,23 @@ TC1411 Edit Personnel Successfully
     # --- Edit Personnel Button ---
     Edit personnel
 
-    # --- (Optional) ตรวจสอบว่าข้อมูลเดิมถูกต้อง ---
-    Element Text Should Be    ${FIRST_NAME_FIELD}    สมสมร
-    Should Be Equal As Strings    ${selected_prefix}    นาย
-    Should Be Equal As Strings    ${selected_status}    ใช้งานอยู่
+    # # --- (Optional) ตรวจสอบว่าข้อมูลเดิมถูกต้อง ---
+    # Element Text Should Be    ${FIRST_NAME_FIELD}    สมสมร
+    # Should Be Equal As Strings    ${selected_prefix}    นาย
+    # Should Be Equal As Strings    ${selected_status}    ใช้งานอยู่
     # --- กรอกข้อมูลบุคลากร ---   
-    # Prefix Dropdown    นางสาว
-    Edit Prefix Dropdown    นางสาว
-    Input First Name        พิมพรหญิง
-    Input Last Name         สุขดี
-    Input Phone Number      0864479528
-    Status Dropdown    ไม่ได้ใช้งานแล้ว
+    Prefix Dropdown Edit    นางสาว
+    Input First Name Edit    พิมพรหญิง
+    Input Last Name Edit    สุขดี
+    Input Phone Number Edit    0864479528
+    Status Dropdown Edit    ไม่ได้ใช้งานแล้ว
     Save Edit Personnel
  
-    Capture Page Screenshot With Name    TC14011_EditPersonnel_Success
+    Capture Page Screenshot With Name    TC1404_EditPersonnel_Success
     Close Browser
 
-TC1412 Delete Personnel Successfully
-    [Documentation]    Test case to delete personnel information successfully
+TC1405 เจ้าหน้าที่ฝ่ายทะเบียนลบบัญชีคุณครูที่ปรึกษาสำเร็จ
+    [Documentation]    ทดสอบการลบบัญชีคุณครูที่ปรึกษาโดยเจ้าหน้าที่ฝ่ายทะเบียนสำเร็จ
     
      # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
@@ -429,11 +184,11 @@ TC1412 Delete Personnel Successfully
     Page Should Contain    รายชื่อบุคลากร
     Delete personnel
 
-    Capture Page Screenshot With Name    TC14012_Delete_Personnel_Success
+    Capture Page Screenshot With Name    TC1405_Delete_Personnel_Success
     Close Browser
 
-TC1413 Add Admin Role Successfully
-    [Documentation]    Test case to add admin role to personnel successfully
+TC1406 เจ้าหน้าที่ฝ่ายทะเบียนเพิ่มสิทธิบทบาทผู้ดูแลเป็นเจ้าหน้าที่สำเร็จ
+    [Documentation]    ทดสอบการเพิ่มสิทธิบทบาทผู้ดูแลเป็นเจ้าหน้าที่สำเร็จ
      # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
     # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
@@ -457,11 +212,11 @@ TC1413 Add Admin Role Successfully
     # --- Toggle Add Admin Role ---
     Toggle Add Admin Role
 
-    Capture Page Screenshot With Name    TC14013_AddAdminRole_Success
+    Capture Page Screenshot With Name    TC1406_AddAdminRole_Success
     Close Browser
 
-TC1414 Delete Admin Role Successfully
-    [Documentation]    Test case to delete admin role from personnel successfully
+TC1407 เจ้าหน้าที่ฝ่ายทะเบียนลบสิทธิบทบาทผู้ดูแลสำเร็จ
+    [Documentation]    ทดสอบการลบสิทธิบทบาทผู้ดูแลสำเร็จ
      # เปิดเบราว์เซอร์ที่ URL ที่กำหนด โดยใช้ browser ที่ระบุ
     Open Browser    ${URL}    ${BROWSER}
     # ขยายหน้าต่างเบราว์เซอร์ให้เต็มจอ เพื่อป้องกันปัญหา element ไม่แสดง
@@ -485,7 +240,7 @@ TC1414 Delete Admin Role Successfully
     # --- Toggle Delete Admin Role ---
     Toggle Delete Admin Role
 
-    Capture Page Screenshot With Name    TC14014_DeleteAdminRole_Success
+    Capture Page Screenshot With Name    TC1407_DeleteAdminRole_Success
     Close Browser
 
 
@@ -513,31 +268,27 @@ Input Phone Number
     [Arguments]    ${PHONE_NUMBER}
     Input Text   ${PHONE_NUMBER_FIELD}    ${PHONE_NUMBER}
 
-Edit Prefix Dropdown
+
+Prefix Dropdown Edit
     [Arguments]    ${PREFIX}
     # ใช้อันเดียวกับ 'Add' ได้ ถ้า Locator เหมือนกัน
-    Select From List By Label    ${PREFIX_DROPDOWN}    ${PREFIX}
+    Select From List By Label    ${PREFIX_DROPDOWN_EDIT}    ${PREFIX}
 
+Input First Name Edit
+    [Arguments]    ${FIRST_NAME}
+    Input Text   ${FIRST_NAME_FIELD_EDIT}    ${FIRST_NAME}
 
+Input Last Name Edit
+    [Arguments]    ${LAST_NAME}
+    Input Text   ${LAST_NAME_FIELD_EDIT}    ${LAST_NAME}
 
-# Prefix Edit Dropdown
-#     [Arguments]    ${PREFIX}
-#     Select From List By Label    ${PREFIX_DROPDOWN}    ${PREFIX}
+Input Phone Number Edit
+    [Arguments]    ${PHONE_NUMBER}
+    Input Text   ${PHONE_NUMBER_FIELD_EDIT}    ${PHONE_NUMBER}
 
-
-
-Status Dropdown
+Status Dropdown Edit
     [Arguments]    ${STATUS}
     Select From List By Label    xpath=//select[@id="status"]    ${STATUS}
-
-Add Teacher
-    Click Element   xpath=//*[@id="root"]/div[2]/div/div[2]/div/div[3]/button  
-
-# id:"add_personnel_btn"
-
-Submit Personnel Info
-    Click Button    xpath=//button[@id="add-personnel-submit-button"]
-    Wait Until Page Contains   เพิ่มข้อมูลครูที่ปรึกษาเรียบร้อย   timeout=10s
 
 Edit personnel
     Click Element    xpath=//*[@id="edit-personnel-button_68fc925aff0ca9eb99eeec7d"]
@@ -546,8 +297,36 @@ Save Edit Personnel
     Click Button    xpath=//*[@id="edit_personnel_68fc925aff0ca9eb99eeec7d"]/div/form/div[2]/div/button[1]
     Wait Until Page Contains   อัพเดทข้อมูลครูที่ปรึกษาเรียบร้อย   timeout=10s
 
+Add Teacher
+    Click Element   xpath=//*[@id="root"]/div[2]/div/div[2]/div/div[3]/button  
+
+Submit Personnel Info Success               
+    Click Button    xpath=//*[@id="add-personnel-submit-button"]
+    Wait Until Page Contains   เพิ่มข้อมูลครูที่ปรึกษาเรียบร้อย   timeout=10s
+
+Submit Personnel No Info Error                
+    Click Button    xpath=//*[@id="add-personnel-submit-button"]
+    Wait Until Page Contains    กรุณาเลือกคำนำหน้า                 timeout=3s
+    Wait Until Page Contains    กรุณากรอกชื่อ                       timeout=3s
+    Wait Until Page Contains    กรุณากรอกนามสกุล                   timeout=3s
+    Wait Until Page Contains    กรุณากรอกเลขที่ประจำตัวบุคลากร    timeout=3s
+    Wait Until Page Contains    กรุณากรอกเบอร์โทรศัพท์             timeout=3s
+    
+    Log    All 5 validation messages are present.  
+
+Submit Personnel Eng Info Error                
+    Click Button    xpath=//*[@id="add-personnel-submit-button"]
+    Wait Until Page Contains    จำเป็นต้องเป็นภาษาไทย                       timeout=3s
+    Wait Until Page Contains    จำเป็นต้องเป็นภาษาไทย                   timeout=3s
+    Wait Until Page Contains    กรุณากรอกเลขที่ประจำตัวบุคลากรให้ถูกต้อง             timeout=3s
+    Wait Until Page Contains    กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง             timeout=3s
+
+    Log    All 4 validation messages are present.
+
+
+
 Delete personnel
-    Click Element    xpath=//*[@id="delete-personnel-button_5"]
+    Click Element    xpath=//*[@id="delete-personnel-button_4"]
     # --- Confirm Deletion in Modal --- 
     Click Button    xpath=/html/body/div[2]/div/div[6]/button[1]
     Wait Until Page Contains   ลบข้อมูลเรียบร้อย   timeout=10s
@@ -559,11 +338,11 @@ Delete personnel
 #     Select From List By Label    xpath=//*[@id="selectedOption"]    ${OPTION}
 
 Toggle Add Admin Role
-    Click Button    xpath=//*[@id="admin-role-toggle_7"]
+    Click Button    xpath=//*[@id="admin-role-toggle_5"]
     Wait Until Page Contains   เพิ่มสิทธ์ผู้ดูแลให้ นางสาว ศุภาพิชย์ สำเร็จ   timeout=10s
 
 Toggle Delete Admin Role
-    Click Button    xpath=//*[@id="admin-role-toggle_7"] 
+    Click Button    xpath=//*[@id="admin-role-toggle_5"]
     # --- Confirm Deletion in Modal --- 
     Click Button    xpath=/html/body/div[2]/div/div[6]/button[1]
     Wait Until Page Contains   ลบสิทธ์ผู้ดูแลให้ นางสาวศุภาพิชย์ สำเร็จ   timeout=10s

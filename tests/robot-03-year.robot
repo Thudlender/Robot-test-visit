@@ -91,9 +91,9 @@ TC1703 - เจ้าหน้าที่ฝ่ายทะเบียนแ�
     Click Element  xpath=//*[@id="root"]/div[1]/div[2]/ul/li[4]/a
     # --- Delay ---
     Sleep  5s
-    # --- กดปุ่ม 3 จุด ---
+    # --- กดปุ่ม 3 จุด ---  
     Click Element    xpath=//*[@id="dropdown_68feb9865d1e6e2460e0505c"]
-    # --- กดปุ่ม แก้ไข ---
+    # --- กดปุ่ม แก้ไข --- 
     Click Element    xpath=//*[@id="edit_year_68feb9865d1e6e2460e0505c"]
     # --- แก้ไขปีการศึกษา ---
     Edit Academic Year   
@@ -202,14 +202,13 @@ TC1706 - เจ้าหน้าที่ฝ่ายทะเบียนล�
     Close Browser
 
 *** Keywords ***
-
 Add Academic Year
     Click Element    xpath=//*[@id="add_year_button"]
-    Wait Until Page Contains   สร้างปีการศึกษา 2570 สำเร็จ   timeout=15s
+    Wait Until Page Contains   สร้างปีการศึกษา 2571 สำเร็จ   timeout=15s
 
 Add Academic Year Limit Error
     Click Element    xpath=//*[@id="add_year_button"]
-    Wait Until Page Contains   สร้างปีการศึกษา 2574 ไม่สำเร็จ   timeout=15s
+    Wait Until Page Contains   สร้างปีการศึกษา 2572 ไม่สำเร็จ   timeout=15s
 
 Edit Academic Year
     Double Click Element    ${ACADEMIC_YEAR_FIELD}

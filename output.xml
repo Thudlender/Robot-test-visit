@@ -1,527 +1,540 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.13.0 on win32)" generated="2025-10-27T09:27:34.505609" rpa="false" schemaversion="5">
-<suite id="s1" name="Robot-07-Teacher-Visit" source="D:\Coding Works\Robot UV\tests\robot-07-teacher-visit.robot">
-<test id="s1-t1" name="TC1301 - คุณครูกรอกข้อมูลการเยี่ยมบ้านสำเร็จ" line="18">
+<robot generator="Robot 7.3.2 (Python 3.13.0 on win32)" generated="2025-10-29T18:41:59.955965" rpa="false" schemaversion="5">
+<suite id="s1" name="Robot-02-Personnel" source="D:\Coding Works\Robot UV\tests\robot-02-personnel.robot">
+<test id="s1-t1" name="TC1405 เจ้าหน้าที่ฝ่ายทะเบียนลบบัญชีคุณครูที่ปรึกษาสำเร็จ" line="165">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:35.344091" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
+<msg time="2025-10-29T18:42:01.008434" level="INFO">Opening browser 'chrome' to base url 'http://localhost:5173'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-10-27T09:27:35.343486" elapsed="4.916415"/>
+<status status="PASS" start="2025-10-29T18:42:01.007880" elapsed="5.712668"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-10-27T09:27:40.263936" elapsed="0.089472"/>
+<status status="PASS" start="2025-10-29T18:42:06.725706" elapsed="0.172387"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:40.354755" level="INFO">Clicking element 'xpath=//*[@id="privacy_checkbox"]'.</msg>
+<msg time="2025-10-29T18:42:06.900630" level="INFO">Clicking element 'xpath=//*[@id="privacy_checkbox"]'.</msg>
 <arg>xpath=//*[@id="privacy_checkbox"]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:40.354054" elapsed="0.501885"/>
+<status status="PASS" start="2025-10-29T18:42:06.899769" elapsed="0.327218"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:40.857209" level="INFO">Clicking element 'xpath=//*[@id="privacy_modal"]/div/div[2]/form/button'.</msg>
+<msg time="2025-10-29T18:42:07.232448" level="INFO">Clicking element 'xpath=//*[@id="privacy_modal"]/div/div[2]/form/button'.</msg>
 <arg>xpath=//*[@id="privacy_modal"]/div/div[2]/form/button</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:40.856632" elapsed="0.326143"/>
+<status status="PASS" start="2025-10-29T18:42:07.232040" elapsed="0.676698"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:41.184098" level="INFO">Clicking element 'id=btn-login'.</msg>
+<msg time="2025-10-29T18:42:07.911356" level="INFO">Clicking element 'id=btn-login'.</msg>
 <arg>id=btn-login</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:41.183662" elapsed="0.200321"/>
+<status status="PASS" start="2025-10-29T18:42:07.910877" elapsed="0.270035"/>
 </kw>
 <kw name="Login With Google OAuth" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:41.390118" level="INFO">${main_windows} = ['C0A5ABBF102433925FDAEB5E466FB1BA']</msg>
+<msg time="2025-10-29T18:42:08.185987" level="INFO">${main_windows} = ['990A67230A66CA03F60DDF7D70700DED']</msg>
 <var>${main_windows}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:41.386723" elapsed="0.003500"/>
+<status status="PASS" start="2025-10-29T18:42:08.182901" elapsed="0.003174"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
 <arg>Main window handles: ${main_windows}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-10-27T09:27:41.390566" elapsed="0.000698"/>
+<status status="PASS" start="2025-10-29T18:42:08.186833" elapsed="0.002581"/>
 </kw>
 <kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
 <kw name="Popup Window Should Appear" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:41.396997" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA']</msg>
+<msg time="2025-10-29T18:42:08.195714" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:41.393210" elapsed="0.003918"/>
+<status status="PASS" start="2025-10-29T18:42:08.191659" elapsed="0.004141"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:41.398479" level="INFO">Length is 1.</msg>
-<msg time="2025-10-27T09:27:41.398716" level="INFO">${count} = 1</msg>
+<msg time="2025-10-29T18:42:08.196901" level="INFO">Length is 1.</msg>
+<msg time="2025-10-29T18:42:08.197094" level="INFO">${count} = 1</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:41.398051" elapsed="0.000742"/>
+<status status="PASS" start="2025-10-29T18:42:08.196519" elapsed="0.000630"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
-<msg time="2025-10-27T09:27:41.400381" level="FAIL">Expected popup window to appear, but found only 1</msg>
+<msg time="2025-10-29T18:42:08.198197" level="FAIL">Expected popup window to appear, but found only 1</msg>
 <arg>${count} &gt; 1</arg>
 <arg>msg=Expected popup window to appear, but found only ${count}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="FAIL" start="2025-10-27T09:27:41.399168" elapsed="0.002386">Expected popup window to appear, but found only 1</status>
+<status status="FAIL" start="2025-10-29T18:42:08.197438" elapsed="0.001100">Expected popup window to appear, but found only 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:41.392418" elapsed="0.009613">Expected popup window to appear, but found only 1</status>
+<status status="FAIL" start="2025-10-29T18:42:08.190513" elapsed="0.008307">Expected popup window to appear, but found only 1</status>
 </kw>
 <kw name="Popup Window Should Appear" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:42.414483" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:10.380887" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.403367" elapsed="0.011218"/>
+<status status="PASS" start="2025-10-29T18:42:09.200867" elapsed="1.180111"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:42.416345" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:42.416513" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:10.381531" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:10.381667" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.416002" elapsed="0.000601"/>
+<status status="PASS" start="2025-10-29T18:42:10.381253" elapsed="0.000486"/>
 </kw>
 <kw name="Should Be True" owner="BuiltIn">
 <arg>${count} &gt; 1</arg>
 <arg>msg=Expected popup window to appear, but found only ${count}</arg>
 <doc>Fails if the given condition is not true.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.416967" elapsed="0.001165"/>
+<status status="PASS" start="2025-10-29T18:42:10.381947" elapsed="0.000504"/>
 </kw>
-<status status="PASS" start="2025-10-27T09:27:42.402853" elapsed="0.015586"/>
+<status status="PASS" start="2025-10-29T18:42:09.199893" elapsed="1.182745"/>
 </kw>
 <arg>10x</arg>
 <arg>1s</arg>
 <arg>Popup Window Should Appear</arg>
 <doc>Runs the specified keyword and retries if it fails.</doc>
-<status status="PASS" start="2025-10-27T09:27:41.391663" elapsed="1.026918"/>
+<status status="PASS" start="2025-10-29T18:42:08.189811" elapsed="2.192983"/>
 </kw>
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:42.421875" level="INFO">${all_windows} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:10.387868" level="INFO">${all_windows} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${all_windows}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.418903" elapsed="0.003045"/>
+<status status="PASS" start="2025-10-29T18:42:10.383101" elapsed="0.004853"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
 <arg>All windows: ${all_windows}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.422211" elapsed="0.000478"/>
+<status status="PASS" start="2025-10-29T18:42:10.388273" elapsed="0.002303"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2025-10-27T09:27:42.423252" level="INFO">${popup_window} = 150CB44B3530E286F6631ED09328040C</msg>
+<msg time="2025-10-29T18:42:10.391776" level="INFO">${popup_window} = 7699876F787E9D7606D9EDCC3B0F6EB0</msg>
 <var>${popup_window}</var>
 <arg>${all_windows}[-1]</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.422897" elapsed="0.000399"/>
+<status status="PASS" start="2025-10-29T18:42:10.391248" elapsed="0.000600"/>
 </kw>
 <kw name="Switch Window" owner="SeleniumLibrary">
 <arg>${popup_window}</arg>
 <doc>Switches to browser window matching ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.423466" elapsed="0.150372"/>
+<status status="PASS" start="2025-10-29T18:42:10.392168" elapsed="0.129204"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
 <arg>Switched to popup window: ${popup_window}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.574161" elapsed="0.000462"/>
+<status status="PASS" start="2025-10-29T18:42:10.521803" elapsed="0.006711"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>id=identifierId</arg>
 <arg>timeout=15s</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2025-10-27T09:27:42.574886" elapsed="3.942469"/>
+<status status="PASS" start="2025-10-29T18:42:10.528987" elapsed="12.061499"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:46.518322" level="INFO">Typing text '654259027@webmail.npru.ac.th' into text field 'id=identifierId'.</msg>
+<msg time="2025-10-29T18:42:22.591393" level="INFO">Typing text '654259027@webmail.npru.ac.th' into text field 'id=identifierId'.</msg>
 <arg>id=identifierId</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:46.517783" elapsed="0.709140"/>
+<status status="PASS" start="2025-10-29T18:42:22.590849" elapsed="4.612170"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:47.227761" level="INFO">Clicking element 'xpath=//*[@id="identifierNext"]/div/button/span'.</msg>
+<msg time="2025-10-29T18:42:27.203731" level="INFO">Clicking element 'xpath=//*[@id="identifierNext"]/div/button/span'.</msg>
 <arg>xpath=//*[@id="identifierNext"]/div/button/span</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:47.227352" elapsed="0.465117"/>
+<status status="PASS" start="2025-10-29T18:42:27.203363" elapsed="4.600488"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>name=Passwd</arg>
 <arg>timeout=15s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-10-27T09:27:47.692819" elapsed="5.447372"/>
+<status status="PASS" start="2025-10-29T18:42:31.804231" elapsed="3.946529"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:53.141303" level="INFO">Typing text '166889966' into text field 'name=Passwd'.</msg>
+<msg time="2025-10-29T18:42:35.751797" level="INFO">Typing text '166889966' into text field 'name=Passwd'.</msg>
 <arg>name=Passwd</arg>
 <arg>${password}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:53.140793" elapsed="0.398004"/>
+<status status="PASS" start="2025-10-29T18:42:35.751176" elapsed="1.479345"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:53.539504" level="INFO">Clicking element 'xpath=//*[@id="passwordNext"]/div/button/span'.</msg>
+<msg time="2025-10-29T18:42:37.231329" level="INFO">Clicking element 'xpath=//*[@id="passwordNext"]/div/button/span'.</msg>
 <arg>xpath=//*[@id="passwordNext"]/div/button/span</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:27:53.539133" elapsed="0.226278"/>
+<status status="PASS" start="2025-10-29T18:42:37.230934" elapsed="1.803048"/>
 </kw>
 <kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:53.769176" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:39.366046" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:53.766371" elapsed="0.002873"/>
+<status status="PASS" start="2025-10-29T18:42:39.035558" elapsed="0.330577"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:53.769658" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:53.769761" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:39.366751" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:39.366910" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:53.769459" elapsed="0.000346"/>
+<status status="PASS" start="2025-10-29T18:42:39.366455" elapsed="0.000514"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:27:53.770304" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:39.367681" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-10-27T09:27:53.770505" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<msg time="2025-10-29T18:42:39.367892" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-10-27T09:27:53.769971" elapsed="0.000674">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:39.367234" elapsed="0.000832">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:53.766068" elapsed="0.004783">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:39.034932" elapsed="0.333445">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:54.786374" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:40.500192" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:54.776174" elapsed="0.010314"/>
+<status status="PASS" start="2025-10-29T18:42:40.369890" elapsed="0.130398"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:54.787187" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:54.787352" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:40.501051" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:40.501289" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:54.786867" elapsed="0.000550"/>
+<status status="PASS" start="2025-10-29T18:42:40.500602" elapsed="0.000814"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:27:54.788150" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:40.502420" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-10-27T09:27:54.788354" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<msg time="2025-10-29T18:42:40.503718" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-10-27T09:27:54.787704" elapsed="0.000788">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:40.501785" elapsed="0.002262">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:54.774693" elapsed="0.016377">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:40.369259" elapsed="0.135076">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:55.801193" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:41.565551" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:55.793196" elapsed="0.008236"/>
+<status status="PASS" start="2025-10-29T18:42:41.505824" elapsed="0.059814"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:55.802164" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:55.805710" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:41.566276" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:41.566455" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:55.801810" elapsed="0.004018"/>
+<status status="PASS" start="2025-10-29T18:42:41.565948" elapsed="0.000567"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:27:55.806733" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:41.567337" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-10-27T09:27:55.806920" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<msg time="2025-10-29T18:42:41.567561" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-10-27T09:27:55.806271" elapsed="0.000763">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:41.566816" elapsed="0.000900">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:55.792502" elapsed="0.014735">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:41.505288" elapsed="0.062698">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:56.811313" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:42.749703" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:56.808764" elapsed="0.002620"/>
+<status status="PASS" start="2025-10-29T18:42:42.569722" elapsed="0.180067"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:56.811855" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:56.811971" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:42.750430" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:42.750593" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:56.811634" elapsed="0.000380"/>
+<status status="PASS" start="2025-10-29T18:42:42.750089" elapsed="0.000556"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:27:56.812537" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:42.751418" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-10-27T09:27:56.812680" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<msg time="2025-10-29T18:42:42.751624" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-10-27T09:27:56.812183" elapsed="0.000606">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:42.750918" elapsed="0.000858">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:56.808251" elapsed="0.006081">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:42.569079" elapsed="0.182951">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:57.821031" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:43.940550" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:57.817105" elapsed="0.003998"/>
+<status status="PASS" start="2025-10-29T18:42:43.753755" elapsed="0.186875"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:57.821621" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:57.821803" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:43.941279" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:43.941449" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:57.821363" elapsed="0.000509"/>
+<status status="PASS" start="2025-10-29T18:42:43.940969" elapsed="0.000540"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:27:57.822841" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:43.942887" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-10-27T09:27:57.823011" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<msg time="2025-10-29T18:42:43.943700" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-10-27T09:27:57.822384" elapsed="0.000738">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:43.942140" elapsed="0.001837">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:57.815517" elapsed="0.007819">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:43.752973" elapsed="0.191450">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:58.846328" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:45.131035" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:58.824795" elapsed="0.021615"/>
+<status status="PASS" start="2025-10-29T18:42:44.946216" elapsed="0.184943"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:58.847003" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:58.847177" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:45.131695" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:45.131839" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:58.846709" elapsed="0.000527"/>
+<status status="PASS" start="2025-10-29T18:42:45.131434" elapsed="0.000453"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:27:58.849940" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:45.132527" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-10-27T09:27:58.850400" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<msg time="2025-10-29T18:42:45.132722" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-10-27T09:27:58.847971" elapsed="0.004147">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:45.132097" elapsed="0.000772">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:58.824286" elapsed="0.034504">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:44.945619" elapsed="0.187563">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:27:59.865192" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA', '150CB44B3530E286F6631ED09328040C']</msg>
+<msg time="2025-10-29T18:42:46.321586" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:27:59.861859" elapsed="0.003401"/>
+<status status="PASS" start="2025-10-29T18:42:46.134898" elapsed="0.186779"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:27:59.865694" level="INFO">Length is 2.</msg>
-<msg time="2025-10-27T09:27:59.865802" level="INFO">${count} = 2</msg>
+<msg time="2025-10-29T18:42:46.322426" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:46.322639" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:27:59.865491" elapsed="0.000353"/>
+<status status="PASS" start="2025-10-29T18:42:46.322026" elapsed="0.000674"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:27:59.866305" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:46.323476" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
-<msg time="2025-10-27T09:27:59.866482" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<msg time="2025-10-29T18:42:46.323701" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="FAIL" start="2025-10-27T09:27:59.866002" elapsed="0.000605">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:46.322985" elapsed="0.000888">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
-<status status="FAIL" start="2025-10-27T09:27:59.861339" elapsed="0.005483">Expected popup to close, but found 2 windows: 2 != 1</status>
+<status status="FAIL" start="2025-10-29T18:42:46.134169" elapsed="0.190005">Expected popup to close, but found 2 windows: 2 != 1</status>
 </kw>
 <kw name="Popup Window Should Close" owner="keywords">
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:00.872029" level="INFO">${handles} = ['C0A5ABBF102433925FDAEB5E466FB1BA']</msg>
+<msg time="2025-10-29T18:42:47.364368" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']</msg>
 <var>${handles}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:28:00.869172" elapsed="0.002941"/>
+<status status="PASS" start="2025-10-29T18:42:47.325681" elapsed="0.038808"/>
 </kw>
 <kw name="Get Length" owner="BuiltIn">
-<msg time="2025-10-27T09:28:00.872736" level="INFO">Length is 1.</msg>
-<msg time="2025-10-27T09:28:00.872885" level="INFO">${count} = 1</msg>
+<msg time="2025-10-29T18:42:47.365172" level="INFO">Length is 2.</msg>
+<msg time="2025-10-29T18:42:47.365352" level="INFO">${count} = 2</msg>
 <var>${count}</var>
 <arg>${handles}</arg>
 <doc>Returns and logs the length of the given item as an integer.</doc>
-<status status="PASS" start="2025-10-27T09:28:00.872432" elapsed="0.000508"/>
+<status status="PASS" start="2025-10-29T18:42:47.364834" elapsed="0.000580"/>
 </kw>
 <kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2025-10-27T09:28:00.873622" level="INFO">Argument types are:
+<msg time="2025-10-29T18:42:47.366220" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<msg time="2025-10-29T18:42:47.366442" level="FAIL">Expected popup to close, but found 2 windows: 2 != 1</msg>
+<arg>${count}</arg>
+<arg>1</arg>
+<arg>msg=Expected popup to close, but found ${count} windows</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="FAIL" start="2025-10-29T18:42:47.365714" elapsed="0.001053">Expected popup to close, but found 2 windows: 2 != 1</status>
+</kw>
+<status status="FAIL" start="2025-10-29T18:42:47.325028" elapsed="0.042100">Expected popup to close, but found 2 windows: 2 != 1</status>
+</kw>
+<kw name="Popup Window Should Close" owner="keywords">
+<kw name="Get Window Handles" owner="SeleniumLibrary">
+<msg time="2025-10-29T18:42:48.697942" level="INFO">${handles} = ['990A67230A66CA03F60DDF7D70700DED']</msg>
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<status status="PASS" start="2025-10-29T18:42:48.368709" elapsed="0.329334"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-10-29T18:42:48.698978" level="INFO">Length is 1.</msg>
+<msg time="2025-10-29T18:42:48.699127" level="INFO">${count} = 1</msg>
+<var>${count}</var>
+<arg>${handles}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-10-29T18:42:48.698615" elapsed="0.000558"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-10-29T18:42:48.699848" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${count}</arg>
 <arg>1</arg>
 <arg>msg=Expected popup to close, but found ${count} windows</arg>
 <doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2025-10-27T09:28:00.873220" elapsed="0.000509"/>
+<status status="PASS" start="2025-10-29T18:42:48.699431" elapsed="0.000541"/>
 </kw>
-<status status="PASS" start="2025-10-27T09:28:00.868652" elapsed="0.005253"/>
+<status status="PASS" start="2025-10-29T18:42:48.368142" elapsed="0.332021"/>
 </kw>
 <arg>10x</arg>
 <arg>1s</arg>
 <arg>Popup Window Should Close</arg>
 <doc>Runs the specified keyword and retries if it fails.</doc>
-<status status="PASS" start="2025-10-27T09:27:53.765705" elapsed="7.108310"/>
+<status status="PASS" start="2025-10-29T18:42:39.034389" elapsed="9.665894"/>
 </kw>
 <kw name="Get Window Handles" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:00.877362" level="INFO">${main_windows} = ['C0A5ABBF102433925FDAEB5E466FB1BA']</msg>
+<msg time="2025-10-29T18:42:48.881190" level="INFO">${main_windows} = ['990A67230A66CA03F60DDF7D70700DED']</msg>
 <var>${main_windows}</var>
 <doc>Returns all child window handles of the selected browser as a list.</doc>
-<status status="PASS" start="2025-10-27T09:28:00.874253" elapsed="0.003225"/>
+<status status="PASS" start="2025-10-29T18:42:48.700549" elapsed="0.180713"/>
 </kw>
 <kw name="Switch Window" owner="SeleniumLibrary">
 <arg>${main_windows}[0]</arg>
 <doc>Switches to browser window matching ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:28:00.877801" elapsed="0.015235"/>
+<status status="PASS" start="2025-10-29T18:42:48.881523" elapsed="0.204131"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
 <arg>Switched back to main window: ${main_windows}[0]</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-10-27T09:28:00.893454" elapsed="0.001170"/>
+<status status="PASS" start="2025-10-29T18:42:49.086019" elapsed="0.028814"/>
 </kw>
 <arg>${USERNAME}</arg>
 <arg>${PASSWORD}</arg>
-<status status="PASS" start="2025-10-27T09:27:41.385519" elapsed="19.509328"/>
+<status status="PASS" start="2025-10-29T18:42:08.181867" elapsed="40.933187"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-27T09:28:05.896760" level="INFO">Slept 5 seconds.</msg>
+<msg time="2025-10-29T18:42:54.120625" level="INFO">Slept 5 seconds.</msg>
 <arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-27T09:28:00.896069" elapsed="5.000933"/>
+<status status="PASS" start="2025-10-29T18:42:49.116837" elapsed="5.003984"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:05.927892" level="INFO">Current page contains text 'รายชื่อบุคลากร'.</msg>
+<msg time="2025-10-29T18:42:54.433334" level="INFO">Current page contains text 'รายชื่อบุคลากร'.</msg>
 <arg>รายชื่อบุคลากร</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-10-27T09:28:05.897649" elapsed="0.030361"/>
+<status status="PASS" start="2025-10-29T18:42:54.129145" elapsed="0.304358"/>
 </kw>
+<kw name="Delete personnel">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:05.928795" level="INFO">Clicking element 'xpath=//*[@id="btn-switch-navbar"]'.</msg>
-<arg>xpath=//*[@id="btn-switch-navbar"]</arg>
+<msg time="2025-10-29T18:42:54.447189" level="INFO">Clicking element 'xpath=//*[@id="delete-personnel-button_5"]'.</msg>
+<arg>xpath=//*[@id="delete-personnel-button_5"]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:28:05.928494" elapsed="0.165338"/>
+<status status="PASS" start="2025-10-29T18:42:54.446663" elapsed="2.220270"/>
 </kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-27T09:28:11.096053" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-27T09:28:06.095289" elapsed="5.000934"/>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-10-29T18:42:56.668091" level="INFO">Clicking button 'xpath=/html/body/div[2]/div/div[6]/button[1]'.</msg>
+<arg>xpath=/html/body/div[2]/div/div[6]/button[1]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-10-29T18:42:56.667284" elapsed="0.637162"/>
 </kw>
-<kw name="ํYear Dropdown">
-<kw name="Select From List By Label" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:11.097450" level="INFO">Selecting options from selection list 'xpath=//*[@id="year-selector"]' by label 2568.</msg>
-<arg>xpath=//*[@id="year-selector"]</arg>
-<arg>${YEAR}</arg>
-<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
-<status status="PASS" start="2025-10-27T09:28:11.097183" elapsed="0.183890"/>
-</kw>
-<arg>2568</arg>
-<status status="PASS" start="2025-10-27T09:28:11.096707" elapsed="0.184946"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-27T09:28:14.284733" level="INFO">Slept 3 seconds.</msg>
-<arg>3s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-27T09:28:11.282270" elapsed="3.002677"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:14.289349" level="INFO">Clicking element 'xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[5]/td[1]'.</msg>
-<arg>xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[5]/td[1]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:28:14.288821" elapsed="0.228335"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:14.518194" level="INFO">Clicking element 'xpath=//*[@id="manage_student_68ca61cdbd8da69c0f327228"]/div/div/a[5]'.</msg>
-<arg>xpath=//*[@id="manage_student_68ca61cdbd8da69c0f327228"]/div/div/a[5]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:28:14.517754" elapsed="1.523543"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-10-27T09:28:21.051415" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-10-27T09:28:16.050768" elapsed="5.000837"/>
-</kw>
-<kw name="Normalize Path" owner="OperatingSystem">
-<msg time="2025-10-27T09:28:21.052625" level="INFO">${absolute_path} = D:\Coding Works\Robot UV\resources\Teacher_Visits_photo\House1.jpg</msg>
-<var>${absolute_path}</var>
-<arg>${HOUSE_1_IMAGE}</arg>
-<doc>Normalizes the given path.</doc>
-<status status="PASS" start="2025-10-27T09:28:21.052204" elapsed="0.000474"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-10-27T09:28:21.053997" level="INFO">File path to upload is: D:\Coding Works\Robot UV\resources\Teacher_Visits_photo\House1.jpg</msg>
-<arg>File path to upload is: ${absolute_path}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-10-27T09:28:21.053635" elapsed="0.000471"/>
-</kw>
-<kw name="Choose File" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:21.055067" level="INFO">Sending D:\Coding Works\Robot UV\resources\Teacher_Visits_photo\House1.jpg to browser.</msg>
-<arg>${HOUSE_PHOTO_INPUT}</arg>
-<arg>${absolute_path}</arg>
-<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
-<status status="PASS" start="2025-10-27T09:28:21.054740" elapsed="0.101208"/>
-</kw>
-<kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-10-27T09:28:21.502470" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-12.png"&gt;&lt;img src="selenium-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-10-27T09:28:21.502777" level="FAIL">Invalid log level 'TIMEOUT=10S'.</msg>
-<arg>สร้างข้อมูลสำเร็จ</arg>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>ลบข้อมูลเรียบร้อย</arg>
 <arg>timeout=10s</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<status status="FAIL" start="2025-10-27T09:28:21.158706" elapsed="0.436310">Invalid log level 'TIMEOUT=10S'.</status>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-10-29T18:42:57.304794" elapsed="0.449506"/>
+</kw>
+<status status="PASS" start="2025-10-29T18:42:54.445779" elapsed="3.308756"/>
 </kw>
 <kw name="Capture Page Screenshot With Name">
-<arg>TC1301_Teacher_Visits_Success</arg>
-<status status="NOT RUN" start="2025-10-27T09:28:21.595699" elapsed="0.000107"/>
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-10-29T18:42:57.756968" level="INFO">${timestamp} = 20251029_184257</msg>
+<var>${timestamp}</var>
+<arg>result_format=%Y%m%d_%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-10-29T18:42:57.756263" elapsed="0.000789"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-29T18:42:57.757796" level="INFO">${folder} = D:\Coding Works\Robot UV/results/Personnel_results</msg>
+<var>${folder}</var>
+<arg>${EXECDIR}/results/Personnel_results</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-29T18:42:57.757380" elapsed="0.000490"/>
+</kw>
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2025-10-29T18:42:57.759466" level="INFO" html="true">Directory '&lt;a href="file://D:\Coding Works\Robot UV\results\Personnel_results"&gt;D:\Coding Works\Robot UV\results\Personnel_results&lt;/a&gt;' already exists.</msg>
+<arg>${folder}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2025-10-29T18:42:57.758132" elapsed="0.001639"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-29T18:42:57.761150" level="INFO">${filename} = D:\Coding Works\Robot UV/results/Personnel_results/TC1405_Delete_Personnel_Success_20251029_184257.png</msg>
+<var>${filename}</var>
+<arg>${folder}/${test_case_name}_${timestamp}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-29T18:42:57.760182" elapsed="0.001130"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-29T18:42:57.762501" level="INFO">Capturing screenshot: D:\Coding Works\Robot UV/results/Personnel_results/TC1405_Delete_Personnel_Success_20251029_184257.png</msg>
+<arg>Capturing screenshot: ${filename}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-29T18:42:57.761703" elapsed="0.001042"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-10-29T18:42:58.050343" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="results/Personnel_results/TC1405_Delete_Personnel_Success_20251029_184257.png"&gt;&lt;img src="results/Personnel_results/TC1405_Delete_Personnel_Success_20251029_184257.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${filename}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-10-29T18:42:57.763099" elapsed="0.287443"/>
+</kw>
+<arg>TC1405_Delete_Personnel_Success</arg>
+<status status="PASS" start="2025-10-29T18:42:57.755488" elapsed="0.295267"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-10-27T09:28:21.596167" elapsed="0.000052"/>
+<status status="PASS" start="2025-10-29T18:42:58.051623" elapsed="11.979763"/>
 </kw>
-<doc>ทดสอบการกรอกข้อมูลการเยี่ยมบ้านสำเร็จ</doc>
-<status status="FAIL" start="2025-10-27T09:27:35.339231" elapsed="46.257377">Invalid log level 'TIMEOUT=10S'.</status>
+<doc>ทดสอบการลบบัญชีคุณครูที่ปรึกษาโดยเจ้าหน้าที่ฝ่ายทะเบียนสำเร็จ</doc>
+<status status="PASS" start="2025-10-29T18:42:01.000979" elapsed="69.030998"/>
 </test>
-<doc>ฟังก์ชันการจัดการข้อมูลการเยี่ยมบ้านนักเรียน</doc>
-<status status="FAIL" start="2025-10-27T09:27:34.509252" elapsed="47.088549"/>
+<doc>ชุดการทดสอบสำหรับระบบจัดการข้อมูลบุคลากร (Personnel Management)</doc>
+<status status="PASS" start="2025-10-29T18:41:59.961423" elapsed="70.071952"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Robot-07-Teacher-Visit" id="s1" pass="0" fail="1" skip="0">Robot-07-Teacher-Visit</stat>
+<stat name="Robot-02-Personnel" id="s1" pass="1" fail="0" skip="0">Robot-02-Personnel</stat>
 </suite>
 </statistics>
 <errors>

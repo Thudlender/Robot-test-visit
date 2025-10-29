@@ -1,5 +1,5 @@
 *** Variables ***
-${BROWSER}          chrome
+${BROWSER}         chrome
 
 # http://localhost:5173
 # https://project-visit-home.xyz/
