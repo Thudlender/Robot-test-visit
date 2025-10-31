@@ -66,6 +66,29 @@ Edit Student Button
     Click Element    //*[@id="edit-student-button_6"]
     Sleep    2s
 
+Submit Student Button
+    Click Element    xpath=//*[@id="add-student-submit-button"]
+    Wait Until Page Contains    เพิ่มข้อมูลนักเรียนสำเร็จ   timeout=10s
+
+Submit Student Button No Info
+    Click Element    xpath=//*[@id="add-student-submit-button"]
+    Wait Until Page Contains    กรุณาเลือกคำนำหน้า
+    Wait Until Page Contains    กรุณากรอกชื่อ
+    Wait Until Page Contains    กรุณากรอกนามสกุล
+    Wait Until Page Contains    กรุณากรอกเลขที่ประจำตัวบุคลากร
+
+######
+
+    Log    All 4 validation messages are present.
+
+Submit Student Button Specail Eng 
+    Click Element    xpath=//*[@id="add-student-submit-button"]
+    Wait Until Page Contains    จำเป็นต้องเป็นภาษาไทย
+    Wait Until Page Contains    จำเป็นต้องเป็นภาษาไทย
+    Wait Until Page Contains    กรุณากรอกเลขที่ประจำตัวบุคลากร
+
+    Log    All 3 validation messages are present.
+
 Delete Student Button
     #--- ปุ่มลบนักเรียน ---
     Click Element      xpath=//*[@id="delete-student-button_7"]
@@ -76,19 +99,19 @@ Delete Student Button
 
 Select Dropdown Select Prefix Student
     [Arguments]    ${STUDENT_PREFIX}
-    Select From List By Label    ${STUDENT_PREFIX_FIELD}    ${STUDENT_PREFIX}
-
-Add Student ID
-    [Arguments]    ${STUDENT_ID_NUMBER} 
-    Input Text    id=user_id_add    ${STUDENT_ID_NUMBER} 
+    Select From List By Label    ${STUDENT_PREFIX_DROPDOWN}    ${STUDENT_PREFIX}
 
 Add Student Name
     [Arguments]    ${STUDENT_NAME}
-    Input Text    id=first_name_add    ${STUDENT_NAME}
+    Input Text    ${STUDENT_NAME_FIELD}    ${STUDENT_NAME}
 
 Add Student Last Name
     [Arguments]    ${STUDENT_LASTNAME}
-    Input Text    id=last_name_add    ${STUDENT_LASTNAME}
+    Input Text    ${STUDENT_LAST_NAME_FIELD}    ${STUDENT_LASTNAME}
+
+Add Student ID
+    [Arguments]    ${STUDENT_ID_NUMBER} 
+    Input Text    ${STUDENT_ID_FIELD}    ${STUDENT_ID_NUMBER} 
 
 Add Class Year
     [Arguments]    ${CLASS_YEAR_NUMBER}
