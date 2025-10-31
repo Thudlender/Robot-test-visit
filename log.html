@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.3.2 (Python 3.13.0 on win32)" name="Generator">
+<meta content="Robot Framework 7.0 (Python 3.13.0 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -724,13 +724,10 @@ function toggleSuite(suiteId) {
     toggleElement(suiteId, ['keyword', 'suite', 'test']);
 }
 function toggleTest(testId) {
+    toggleElement(testId, ['keyword']);
     var test = window.testdata.findLoaded(testId);
-    var autoExpand = test.status == "FAIL" || test.status == "SKIP";
-    var closed = $('#' + testId).children('.element-header').hasClass('closed');
-    if (autoExpand && closed)
+    if (test.status == "FAIL" || test.status == "SKIP")
         expandFailed(test);
-    else
-        toggleElement(testId, ['keyword']);
 }
 function toggleKeyword(kwId) {
     toggleElement(kwId, ['keyword']);
@@ -1255,48 +1252,58 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0)
+        if (total == 0) {
             return [0.0, 0.0, 0.0];
+        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1;
+            pass = 0.1
         if (fail > 0 && fail < 0.1)
-            fail = 0.1;
+            fail = 0.1
         if (skip > 0 && skip < 0.1)
-            skip = 0.1;
+            skip = 0.1
         if (pass > 99.95 && pass < 100)
-            pass = 99.9;
+            pass = 99.9
         if (fail > 99.95 && fail < 100)
-            fail = 99.9;
+            fail = 99.9
         if (skip > 99.95 && skip < 100)
-            skip = 99.9;
-        return [round1(pass), round1(skip), round1(fail)];
+            skip = 99.9
+        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1.0;
+            num1 = 1
         if (num2 > 0 && num2 < 1)
-            num2 = 1.0;
+            num2 = 1
         if (num3 > 0 && num3 < 1)
-            num3 = 1.0;
+            num3 = 1
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 >= num2 && num1 >= num3)
-                num1 = round1(num1 - 0.1);
-            else if (num2 >= num1 && num2 >= num3)
-                num2 = round1(num2 - 0.1);
-            else
-                num3 = round1(num3 - 0.1);
+            if (num1 > num2 && num1 > num3)
+                num1 -= 0.1;
+            else if (num2 > num1 && num2 > num3)
+                num2 -= 0.1;
+            else if (num3 > num1 && num3 > num2)
+                num3 -= 0.1;
+            else if (num1 > num3 && num1 == num2) {
+                num1 -= 0.1;
+                num2 -= 0.1;
+            }
+            else if (num1 > num2 && num1 == num3) {
+                num1 -= 0.1;
+                num3 -= 0.1;
+            }
+            else if (num2 > num1 && num2 == num3) {
+                num2 -= 0.1;
+                num3 -= 0.1;
+            }
         }
-        return [num1, num2, num3];
-    }
-    function round1(num) {
-        return Math.round(num*10) / 10;
+        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
     }
     return {
         Statistics: Statistics
@@ -1515,7 +1522,7 @@ window.testdata = function () {
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
                          'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
-                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -2074,25 +2081,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,4,[],[1,0,70072],[],[[5,0,6,[],[1,1040,69031],[[0,7,8,0,9,10,0,0,[1,1047,5713],[[1047,2,11]]],[0,12,8,0,13,0,0,0,[1,6765,172],[]],[0,14,8,0,15,16,0,0,[1,6939,327],[[6940,2,17]]],[0,14,8,0,15,18,0,0,[1,7271,677],[[7271,2,19]]],[0,14,8,0,15,20,0,0,[1,7950,270],[[7950,2,21]]],[0,22,23,0,0,24,0,0,[1,8221,40933],[[0,25,8,0,26,0,27,0,[1,8222,3],[[8225,2,28]]],[0,29,30,0,31,32,0,0,[1,8226,3],[]],[0,33,30,0,34,35,0,0,[1,8229,2193],[[0,36,23,0,0,0,0,0,[0,8230,8],[[0,25,8,0,26,0,37,0,[1,8231,4],[[8235,2,38]]],[0,39,30,0,40,37,41,0,[1,8236,1],[[8236,2,42],[8236,2,43]]],[0,44,30,0,45,46,0,0,[0,8236,1],[[8237,5,47]]]]],[0,36,23,0,0,0,0,0,[1,9239,1183],[[0,25,8,0,26,0,37,0,[1,9240,1180],[[10420,2,48]]],[0,39,30,0,40,37,41,0,[1,10420,0],[[10421,2,49],[10421,2,50]]],[0,44,30,0,45,46,0,0,[1,10421,1],[]]]]]],[0,25,8,0,26,0,51,0,[1,10422,5],[[10427,2,52]]],[0,29,30,0,31,53,0,0,[1,10427,2],[]],[0,54,30,0,55,56,57,0,[1,10430,1],[[10431,2,58]]],[0,59,8,0,60,57,0,0,[1,10431,129],[]],[0,29,30,0,31,61,0,0,[1,10561,7],[]],[0,62,8,0,63,64,0,0,[1,10568,12061],[]],[0,65,8,0,66,67,0,0,[1,22630,4612],[[22630,2,68]]],[0,14,8,0,15,69,0,0,[1,27242,4600],[[27243,2,70]]],[0,71,8,0,72,73,0,0,[1,31843,3947],[]],[0,65,8,0,66,74,0,0,[1,35790,1479],[[35791,2,75]]],[0,14,8,0,15,76,0,0,[1,37270,1803],[[37270,2,77]]],[0,33,30,0,34,78,0,0,[1,39073,9666],[[0,79,23,0,0,0,0,0,[0,39074,333],[[0,25,8,0,26,0,37,0,[1,39075,331],[[39405,2,48]]],[0,39,30,0,40,37,41,0,[1,39405,1],[[39406,2,49],[39406,2,50]]],[0,80,30,0,81,82,0,0,[0,39406,1],[[39407,2,83],[39407,5,84]]]]],[0,79,23,0,0,0,0,0,[0,40408,135],[[0,25,8,0,26,0,37,0,[1,40409,130],[[40539,2,48]]],[0,39,30,0,40,37,41,0,[1,40540,1],[[40540,2,49],[40540,2,50]]],[0,80,30,0,81,82,0,0,[0,40541,2],[[40541,2,83],[40543,5,84]]]]],[0,79,23,0,0,0,0,0,[0,41544,63],[[0,25,8,0,26,0,37,0,[1,41545,60],[[41605,2,48]]],[0,39,30,0,40,37,41,0,[1,41605,1],[[41605,2,49],[41605,2,50]]],[0,80,30,0,81,82,0,0,[0,41606,1],[[41606,2,83],[41607,5,84]]]]],[0,79,23,0,0,0,0,0,[0,42608,183],[[0,25,8,0,26,0,37,0,[1,42609,180],[[42789,2,48]]],[0,39,30,0,40,37,41,0,[1,42789,1],[[42789,2,49],[42790,2,50]]],[0,80,30,0,81,82,0,0,[0,42790,1],[[42790,2,83],[42791,5,84]]]]],[0,79,23,0,0,0,0,0,[0,43792,191],[[0,25,8,0,26,0,37,0,[1,43793,187],[[43980,2,48]]],[0,39,30,0,40,37,41,0,[1,43980,1],[[43980,2,49],[43980,2,50]]],[0,80,30,0,81,82,0,0,[0,43981,2],[[43982,2,83],[43983,5,84]]]]],[0,79,23,0,0,0,0,0,[0,44985,188],[[0,25,8,0,26,0,37,0,[1,44985,185],[[45170,2,48]]],[0,39,30,0,40,37,41,0,[1,45170,0],[[45171,2,49],[45171,2,50]]],[0,80,30,0,81,82,0,0,[0,45171,1],[[45172,2,83],[45172,5,84]]]]],[0,79,23,0,0,0,0,0,[0,46173,190],[[0,25,8,0,26,0,37,0,[1,46174,187],[[46361,2,48]]],[0,39,30,0,40,37,41,0,[1,46361,1],[[46361,2,49],[46362,2,50]]],[0,80,30,0,81,82,0,0,[0,46362,1],[[46362,2,83],[46363,5,84]]]]],[0,79,23,0,0,0,0,0,[0,47364,42],[[0,25,8,0,26,0,37,0,[1,47365,39],[[47403,2,48]]],[0,39,30,0,40,37,41,0,[1,47404,1],[[47404,2,49],[47404,2,50]]],[0,80,30,0,81,82,0,0,[0,47405,1],[[47405,2,83],[47405,5,84]]]]],[0,79,23,0,0,0,0,0,[1,48407,332],[[0,25,8,0,26,0,37,0,[1,48408,329],[[48737,2,38]]],[0,39,30,0,40,37,41,0,[1,48738,1],[[48738,2,42],[48738,2,43]]],[0,80,30,0,81,82,0,0,[1,48738,1],[[48739,2,83]]]]]]],[0,25,8,0,26,0,27,0,[1,48740,181],[[48920,2,28]]],[0,59,8,0,60,85,0,0,[1,48921,204],[]],[0,29,30,0,31,86,0,0,[1,49125,29],[]]]],[0,87,30,0,88,89,0,0,[1,49156,5004],[[54160,2,90]]],[0,91,8,0,92,93,0,0,[1,54168,304],[[54472,2,94]]],[0,95,0,0,0,0,0,0,[1,54485,3309],[[0,14,8,0,15,96,0,0,[1,54486,2220],[[54486,2,97]]],[0,98,8,0,99,100,0,0,[1,56706,637],[[56707,2,101]]],[0,102,8,0,103,104,0,0,[1,57344,450],[]]]],[0,105,0,0,0,106,0,0,[1,57794,295],[[0,107,108,0,109,110,111,0,[1,57795,1],[[57796,2,112]]],[0,54,30,0,55,113,114,0,[1,57796,0],[[57797,2,115]]],[0,116,117,0,118,114,0,0,[1,57797,2],[[57798,2,119]]],[0,54,30,0,55,120,121,0,[1,57799,1],[[57800,2,122]]],[0,123,30,0,124,125,0,0,[1,57801,1],[[57802,2,126]]],[0,127,8,0,128,121,0,0,[1,57802,287],[[58089,2,129]]]]],[0,130,8,0,131,0,0,0,[1,58091,11980],[]]]]],[],[1,1,0,0]];
+window.output["suite"] = [1,2,3,4,[],[0,0,8165],[],[[5,0,6,[],[0,1641,6482,7],[[0,8,9,0,10,11,0,0,[0,1649,6333],[[1650,2,12],[2365,3,14],[2366,3,15],[7465,2,16],[7466,5,7]]],[0,17,9,0,18,0,0,0,[3,8000,0],[]],[0,19,9,0,20,21,0,0,[3,8011,0],[]],[0,19,9,0,20,22,0,0,[3,8012,0],[]],[0,19,9,0,20,23,0,0,[3,8013,0],[]],[0,24,25,0,0,26,0,0,[3,8029,0],[]],[0,27,28,0,29,30,0,0,[3,8043,0],[]],[0,31,9,0,32,33,0,0,[3,8046,0],[]],[0,34,0,0,0,0,0,0,[3,8047,0],[]],[0,35,0,0,0,0,0,0,[3,8058,1],[]],[0,36,0,0,0,37,0,0,[3,8083,2],[]],[0,38,9,0,39,0,0,0,[3,8102,0],[]]]]],[],[1,0,1,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*Robot-02-Personnel","*D:\\Coding Works\\Robot UV\\tests\\robot-02-personnel.robot","*tests/robot-02-personnel.robot","*<p>ชุดการทดสอบสำหรับระบบจัดการข้อมูลบุคลากร (Personnel Management)\x3c/p>","*TC1405 เจ้าหน้าที่ฝ่ายทะเบียนลบบัญชีคุณครูที่ปรึกษาสำเร็จ","*<p>ทดสอบการลบบัญชีคุณครูที่ปรึกษาโดยเจ้าหน้าที่ฝ่ายทะเบียนสำเร็จ\x3c/p>","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${URL}    ${BROWSER}","*Opening browser 'chrome' to base url '<a href=\"http://localhost:5173\">http://localhost:5173\x3c/a>'.","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*xpath=//*[@id=\"privacy_checkbox\"]","*Clicking element 'xpath=//*[@id=\"privacy_checkbox\"]'.","*xpath=//*[@id=\"privacy_modal\"]/div/div[2]/form/button","*Clicking element 'xpath=//*[@id=\"privacy_modal\"]/div/div[2]/form/button'.","*id=btn-login","*Clicking element 'id=btn-login'.","*Login With Google OAuth","*keywords","*${USERNAME}    ${PASSWORD}","*Get Window Handles","*<p>Returns all child window handles of the selected browser as a list.\x3c/p>","*${main_windows}","*${main_windows} = ['990A67230A66CA03F60DDF7D70700DED']","*Log To Console","*BuiltIn","*<p>Logs the given message to the console.\x3c/p>","*Main window handles: ${main_windows}","*Wait Until Keyword Succeeds","*<p>Runs the specified keyword and retries if it fails.\x3c/p>","*10x    1s    Popup Window Should Appear","*Popup Window Should Appear","*${handles}","*${handles} = ['990A67230A66CA03F60DDF7D70700DED']","*Get Length","*<p>Returns and logs the length of the given item as an integer.\x3c/p>","*${count}","*Length is 1.","*${count} = 1","*Should Be True","*<p>Fails if the given condition is not true.\x3c/p>","*${count} &gt; 1    msg=Expected popup window to appear, but found only ${count}","*Expected popup window to appear, but found only 1","*${handles} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']","*Length is 2.","*${count} = 2","*${all_windows}","*${all_windows} = ['990A67230A66CA03F60DDF7D70700DED', '7699876F787E9D7606D9EDCC3B0F6EB0']","*All windows: ${all_windows}","*Set Variable","*<p>Returns the given values which can then be assigned to a variables.\x3c/p>","*${all_windows}[-1]","*${popup_window}","*${popup_window} = 7699876F787E9D7606D9EDCC3B0F6EB0","*Switch Window","*<p>Switches to browser window matching <code>locator\x3c/code>.\x3c/p>","*Switched to popup window: ${popup_window}","*Wait Until Page Contains Element","*<p>Waits until the element <code>locator\x3c/code> appears on the current page.\x3c/p>","*id=identifierId    timeout=15s","*Input Text","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*id=identifierId    ${username}","*Typing text '654259027@webmail.npru.ac.th' into text field 'id=identifierId'.","*xpath=//*[@id=\"identifierNext\"]/div/button/span","*Clicking element 'xpath=//*[@id=\"identifierNext\"]/div/button/span'.","*Wait Until Element Is Visible","*<p>Waits until the element <code>locator\x3c/code> is visible.\x3c/p>","*name=Passwd    timeout=15s","*name=Passwd    ${password}","*Typing text '166889966' into text field 'name=Passwd'.","*xpath=//*[@id=\"passwordNext\"]/div/button/span","*Clicking element 'xpath=//*[@id=\"passwordNext\"]/div/button/span'.","*10x    1s    Popup Window Should Close","*Popup Window Should Close","*Should Be Equal As Integers","*<p>Fails if objects are unequal after converting them to integers.\x3c/p>","*${count}    1    msg=Expected popup to close, but found ${count} windows","*Argument types are:\n&lt;class 'int'&gt;\n&lt;class 'str'&gt;","*Expected popup to close, but found 2 windows: 2 != 1","*${main_windows}[0]","*Switched back to main window: ${main_windows}[0]","*Sleep","*<p>Pauses the test executed for the given time.\x3c/p>","*5s","*Slept 5 seconds.","*Page Should Contain","*<p>Verifies that current page contains <code>text\x3c/code>.\x3c/p>","*รายชื่อบุคลากร","*Current page contains text 'รายชื่อบุคลากร'.","*Delete personnel","*xpath=//*[@id=\"delete-personnel-button_5\"]","*Clicking element 'xpath=//*[@id=\"delete-personnel-button_5\"]'.","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*xpath=/html/body/div[2]/div/div[6]/button[1]","*Clicking button 'xpath=/html/body/div[2]/div/div[6]/button[1]'.","*Wait Until Page Contains","*<p>Waits until <code>text\x3c/code> appears on the current page.\x3c/p>","*ลบข้อมูลเรียบร้อย    timeout=10s","*Capture Page Screenshot With Name","*TC1405_Delete_Personnel_Success","*Get Current Date","*DateTime","*<p>Returns current local or UTC time with an optional increment.\x3c/p>","*result_format=%Y%m%d_%H%M%S","*${timestamp}","*${timestamp} = 20251029_184257","*${EXECDIR}/results/Personnel_results","*${folder}","*${folder} = D:\\Coding Works\\Robot UV/results/Personnel_results","*Create Directory","*OperatingSystem","*<p>Creates the specified directory.\x3c/p>","*Directory '<a href=\"file://D:\\Coding Works\\Robot UV\\results\\Personnel_results\">D:\\Coding Works\\Robot UV\\results\\Personnel_results\x3c/a>' already exists.","*${folder}/${test_case_name}_${timestamp}.png","*${filename}","*${filename} = D:\\Coding Works\\Robot UV/results/Personnel_results/TC1405_Delete_Personnel_Success_20251029_184257.png","*Log","*<p>Logs the given message with the given level.\x3c/p>","*Capturing screenshot: ${filename}","*Capturing screenshot: D:\\Coding Works\\Robot UV/results/Personnel_results/TC1405_Delete_Personnel_Success_20251029_184257.png","*Capture Page Screenshot","*<p>Takes a screenshot of the current page and embeds it into a log file.\x3c/p>","eNqtjUsKwjAURbcSsgDzscEKSSa6gILOQ0iebSGmIS+lLt8iiBtwcCfnwLmatWg1a9XqzyIJS8Lis6FHarUnU4WHoRVwTQ3ZABWXnCG5L7lfRMeVu0KCBu7nb2sIgOgkl0pweXai76Q6HUoe9+78HAnW8O8w2ebYJkN7zstrv2HevgEBikuD","*Close Browser","*<p>Closes the current browser.\x3c/p>"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Robot-02-Personnel","*D:\\Coding Works\\Robot-Visit\\tests\\robot-02-personnel.robot","*tests/robot-02-personnel.robot","*<p>ชุดการทดสอบสำหรับระบบจัดการข้อมูลบุคลากร (Personnel Management)\x3c/p>","*TC1402 - เพิ่มบุคลากรใหม่โดยไม่กรอกหรือเลือกข้อมูลใดๆเลย","*<p>Test case to add new personnel without selecting prefix\x3c/p>","eNqNlE1r3DAQhs/dX+FjgmEZfUuGHlpi2kKzgd1tcghlkTWjrsnGLrLbbv99FQIhl8o5P887oJfR3FF3lfrflNpzoJ9zPw5NdU3T5H9QU/0aHobxz1BRSmNqqoHmpmm328Pmw3V72NzsD9t2d/P1tr1aVdXFLqdyvOqHODZVOKbxkd4zydawNsLBmnFxudrNPjzMyQdqVu8+0fzZD3iiW0p97ClV93CGs4lRcxUNOadqC8DZ9ze4EbLLGM/uxWaspr+P3Xi6fG0hgIb4fx4iQlfihJ5ciUcnqcQJkBfnW1Wcj4phiXdgQ5E7Fkr9SI2+wL2XpvA+tIzzYt5p64t5AFHg0ilkJe5FFAu7orlAlFhzp/Nz2bKdF9BnW2hl9aKtbK6oFmCAG7e4tc7mPmtmFWdyWY4UYs2ZVtwsytZ0KGvGjNTwBhltfJIdiEVZY9A2y88/7aOfaH9M5PHL0M/7Yz4YL3aIgTxZNDV/GrudT98mSs92PgNpfmUihKBEqGXu4R/VumP/","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${URL}    ${BROWSER}","*Opening browser 'chrome' to base url '<a href=\"https://project-visit-home.xyz/\">https://project-visit-home.xyz/\x3c/a>'.","*s1-t1-k1","eNq1j8sRwjAMRFvRcEoOju/8qqABJVZsQ5BAskn7OBNa4Pp29u3sLZESrGiADKQqCk9kjJkjTEnlSUHzhxS6PTTisGVK70pWYG6s6gLdGSEpzZdDKuVlR++jSFxodyw42hBzSXUcsvgdutZ1pUmazz9YVnatE1xbsyxsbm0FFxpfBIMNdxM+XP+qP3u89v0Jqm0ff89nqRwgM5REMOGU6Avs5XNY","*Error sending stats to Plausible: error sending request for url (<a href=\"https://plausible.io/api/event\">https://plausible.io/api/event\x3c/a>)","*\x3c/td>\x3c/tr><tr><td colspan=\"3\"><a href=\"selenium-screenshot-4.png\"><img src=\"selenium-screenshot-4.png\" width=\"800px\">\x3c/a>","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*xpath=//*[@id=\"privacy_checkbox\"]","*xpath=//*[@id=\"privacy_modal\"]/div/div[2]/form/button","*id=btn-login","*Login With Google OAuth","*keywords","*${USERNAME}    ${PASSWORD}","*Sleep","*BuiltIn","*<p>Pauses the test executed for the given time.\x3c/p>","*5s","*Page Should Contain","*<p>Verifies that current page contains <code>text\x3c/code>.\x3c/p>","*รายชื่อบุคลากร","*Add Teacher","*Submit Personnel No Info Error","*Capture Page Screenshot With Name","*TC1402_Validation","*Close Browser","*<p>Closes the current browser.\x3c/p>"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:01:09","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:01:10","fail":0,"id":"s1","label":"Robot-02-Personnel","name":"Robot-02-Personnel","pass":1,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:06","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:08","fail":1,"id":"s1","label":"Robot-02-Personnel","name":"Robot-02-Personnel","pass":0,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["errors"] = [];
+window.output["errors"] = [[2365,3,14,13],[2366,3,15,13]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1761738119961;
+window.output["baseMillis"] = 1761802396493;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 70139;
+window.output["generated"] = 8362;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2207,7 +2214,7 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr class="row-${$item.index}">
-    <td class="stats-col-name" title="${doc}">
+    <td class="stats-col-name" title="{{html doc}}">
       <div class="stat-name">
         <span>{{html label}}</span>
         {{if info}}(${info}){{/if}}
