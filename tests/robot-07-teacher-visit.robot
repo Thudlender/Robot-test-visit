@@ -4,15 +4,8 @@ Library     SeleniumLibrary
 Library    OperatingSystem
 Resource     ../resources/keywords.robot
 Resource     ../resources/variables.robot
+Resource     ../resources/07-teacher-visit-keywords.robot
 
-
-*** Variables ***
-${HOUSE_PHOTO_INPUT}    //*[@id="root"]/div[2]/div/form/div[1]/div[1]/div[1]/input[@type="file"]
-${FAMILY_PHOTO_INPUT}   //*[@id="root"]/div[2]/div/form/div[1]/div[2]/div[1]/div
-
-# --- File Path ---
-${HOUSE_1_IMAGE}    ${EXECDIR}/resources/Teacher_Visits_photo/House1.jpg
-${FAMILY_1_IMAGE}   ${EXECDIR}/resources/Teacher_Visits_photo/Family1.jpg
 
 *** Test Cases ***
 TC1301 - คุณครูกรอกข้อมูลการเยี่ยมบ้านสำเร็จ
@@ -76,22 +69,6 @@ TC1301 - คุณครูกรอกข้อมูลการเยี่�
 
     Capture Page Screenshot With Name    TC1301_Teacher_Visits_Success
     Close Browser
-
-
-*** Keywords ***
-
-ํYear Dropdown
-    [Arguments]    ${YEAR}
-    Select From List By Label    xpath=//*[@id="year-selector"]    ${YEAR}
-
-Capture Page Screenshot With Name
-    [Arguments]    ${test_case_name}
-    ${timestamp}=    Get Current Date    result_format=%Y%m%d_%H%M%S
-    ${folder}=       Set Variable    ${EXECDIR}/results/Teacher_Visit_results
-    Create Directory    ${folder}
-    ${filename}=     Set Variable    ${folder}/${test_case_name}_${timestamp}.png
-    Log    Capturing screenshot: ${filename}
-    Capture Page Screenshot    ${filename}
 
 
 
