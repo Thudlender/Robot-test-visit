@@ -198,9 +198,9 @@ TC1705 - เจ้าหน้าที่ฝ่ายทะเบียนแ�
     Edit Class Button
     # --- แก้ไขข้อมูลชั้นเรียน ---
     Press Keys              ${CLASS_YEAR_NUMBER_FIELD}    BACKSPACE
-    Add Class Year    2
+    Add Class Year    3
     Press Keys              ${CLASS_ROOM_NUMBER_FIELD}    BACKSPACE
-    Add Class Room    2
+    Add Class Room    4
     Dropdown Select Teacher Name    ศุภาพิชย์ ใจดีมาก
     #--- บันทึกข้อมูลชั้นเรียน แก้ Locator ตรงนี้!!!  ---
     Click Element    xpath=//*[@id="edit_classroom_68e54c1f18c2dc280936b8b9"]/div/form/div/div[4]/button[1]
@@ -451,10 +451,10 @@ TC1711 - เจ้าหน้าที่ฝ่ายทะเบียนแ�
     # --- ปุ่มแก้ไขนักเรียน ---
     Edit Student Button
     # --- กรอกข้อมูลนักเรียน ---
-    Select Dropdown Select Prefix Student    นางสาว
-    Add Student ID    40009
-    Add Student Name    จาตุรงค์
-    Add Student Last Name    หยกนกยูง
+    Select Dropdown Select Prefix Student Edit    นางสาว
+    Edit Student ID    40009
+    Edit Student Name    จาตุรงค์
+    Edit Student Last Name    หยกนกยูง
 
     #--- บันทึกข้อมูลชั้นเรียน ---
     Click Element    xpath=//*[@id="add-student-submit-button"]

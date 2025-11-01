@@ -125,7 +125,21 @@ Dropdown Select Teacher Name
     [Arguments]    ${TEACHER_NAME}
     Select From List By Label    ${TEACHER_NAME_DROPDOWN}    ${TEACHER_NAME}
 
+Select Dropdown Select Prefix Student Edit
+    [Arguments]    ${STUDENT_PREFIX}
+    Select From List By Label    ${STUDENT_PREFIX_DROPDOWN_EDIT}    ${STUDENT_PREFIX}
 
+Edit Student Name
+    [Arguments]    ${STUDENT_NAME}
+    Input Text    ${STUDENT_NAME_FIELD_EDIT}    ${STUDENT_NAME}
+
+Edit Student Last Name
+    [Arguments]    ${STUDENT_LASTNAME}
+    Input Text    ${STUDENT_LAST_NAME_FIELD_EDIT}    ${STUDENT_LASTNAME}
+
+Edit Student ID
+    [Arguments]    ${STUDENT_ID_NUMBER} 
+    Input Text    ${STUDENT_ID_FIELD_EDIT}    ${STUDENT_ID_NUMBER}
 
 Upload Student Excel File
     ${absolute_path} =    Normalize Path    ${STUDENT_EXCEL_FILE}
