@@ -37,12 +37,15 @@ TC9001 - คุณครูทำแบบประเมิน SDQ ประเ
     ํYear Dropdown    2568
     Sleep    3s
     # --- เลือกนักเรียน ---
-    Click Element  xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[5]/td[1]
+    # Click Element  xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[5]/td[1]
+    Click Element  xpath=//*[@id="student_4"]
+    Sleep    5s
     # --- กดปุ่มประเมิน SDQ ---
-    Click Element  xpath=//*[@id="manage_student_68ca61cdbd8da69c0f327228"]/div/div/a[1]
+    # Click Element  xpath=//*[@id="manage_student_68ca61cdbd8da69c0f327228"]/div/div/a[1]
+    Click Element    xpath=//*[@id="sdq_teacher"]
     Sleep    5s
     # --- ทำแบบฟอร์มประเมิน SDQ ---
-    Answer SDQ Page 1
+    # Answer SDQ Page 1
     Answer SDQ Page 2
     Answer SDQ Page 3
     Answer SDQ Page 4

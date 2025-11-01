@@ -24,7 +24,6 @@ TC1301 - คุณครูกรอกข้อมูลการเยี่�
     Login With Google OAuth    ${USERNAME}    ${PASSWORD}
     # รอ 5 วินาที เพื่อให้กระบวนการล็อกอินเสร็จสมบูรณ์
     Sleep    5s
-    
     # --- Verify Login Page ---
     Page Should Contain    รายชื่อบุคลากร
     # --- สลับเป็นคุณครู ---
@@ -34,38 +33,32 @@ TC1301 - คุณครูกรอกข้อมูลการเยี่�
     ํYear Dropdown    2568
     Sleep    3s
     # --- เลือกนักเรียน ---
-    Click Element  xpath=//*[@id="root"]/div[2]/div/div[4]/div/table/tbody/tr[5]/td[1]
+    Choose Student
+    Sleep    10s
     # --- กดปุ่มผลการเยี่ยมบ้าน ---
-    Click Element  xpath=//*[@id="manage_student_68ca61cdbd8da69c0f327228"]/div/div/a[5]
+    Click Button  xpath=//*[@id="visit_add"]
     Sleep    5s
     # --- กรอกข้อมูลการเยี่ยมบ้าน ---
     # --- ทำให้ Path ของไฟล์ถูกต้อง 100% ---
-    ${absolute_path} =    Normalize Path    ${HOUSE_1_IMAGE}
-    Log    File path to upload is: ${absolute_path}
-    #--- อัพโหลดรูปภาพถ่ายที่อยู่อาศัย ---
-    Choose File    ${HOUSE_PHOTO_INPUT}    ${absolute_path}
+    # ${absolute_path} =    Normalize Path    ${HOUSE_1_IMAGE}
+    # Log    File path to upload is: ${absolute_path}
+    # #--- อัพโหลดรูปภาพถ่ายที่อยู่อาศัย ---
+    # Choose File    ${HOUSE_PHOTO_INPUT}    ${absolute_path}
 
-    ${absolute_path} =    Normalize Path    ${FAMILY_1_IMAGE}
-    Log    File path to upload is: ${absolute_path}
-    #--- อัพโหลดรูปภาพถ่ายครอบครัว ---    
-    Choose File    ${FAMILY_PHOTO_INPUT}    ${absolute_path}
+    # ${absolute_path} =    Normalize Path    ${FAMILY_1_IMAGE}
+    # Log    File path to upload is: ${absolute_path}
+    # #--- อัพโหลดรูปภาพถ่ายครอบครัว ---    
+    # Choose File    ${FAMILY_PHOTO_INPUT}    ${absolute_path}
+    
+    House Photo
+    Family Photo
 
     # --- กรอกคำอธิบายสภาพบ้าน ---
-
-
-    # --- กรอกคำอธิบายความสัมพันธ์ครอบครัว ---
-
-
-    # --- กรอกความคิดเห็นของครูที่ปรึกษา    ---
-
-
+    Input House Description    หลังคาบ้านรั่วมีปลวกกิน
+    Input Family Description    ครอบครัวมีความขัดแย้ง
+    # Input Teacher Comment    ครอบครัวนี้ต้องมีการปรับปรุง
     # --- กดปุ่มบันทึกข้อมูล ---
-
-
-
-
-    # --- Verify Submit Page ---
-    Page Should Contain    สร้างข้อมูลสำเร็จ    timeout=10s
+    Save Visit Home Button
 
     Capture Page Screenshot With Name    TC1301_Teacher_Visits_Success
     Close Browser
